@@ -1,8 +1,20 @@
 <!-- FILEPATH: /Users/jasharid/re-client/src/app/events/events-list.component.html -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 " *ngFor="let event of events">
+    <div class="card mb-4" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/sarper.jpeg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ event.title }}</h5>
+        <p class="card-text">{{ event.description }}</p>
+        <a href="#" class="btn btn-primary disabled">Details</a>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
 
-<h2>Events List</h2>
-
-<ul>
+<!-- <ul>
   <li *ngFor="let event of events">
     <div>
       <h3>{{ event.title }}</h3>
@@ -10,4 +22,4 @@
       <p>{{ event.location }}</p>
     </div>
   </li>
-</ul>
+</ul> -->
