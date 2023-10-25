@@ -1,38 +1,25 @@
 import { Component } from '@angular/core';
-
+const events = [
+  {
+    title: 'a mock event',
+    id: '51a7881c-aeb6-442b-85b7-2327cc080086',
+    description: 'something really cool',
+    location: 'Joes pizza',
+    likes: 0,
+  },
+  {
+    title: 'another mock event',
+    id: '2b699e91-b089-4745-a58d-d15667c79784',
+    description: 'something even cooler',
+    location: 'Johns pizza',
+    likes: 0,
+  },
+];
 @Component({
   selector: 'app-events-list',
   templateUrl: './events-list.component.html',
   styleUrls: ['./events-list.component.css'],
 })
 export class EventsListComponent {
-  events = [
-    {
-      id: 1,
-      title: 'Event 1',
-      date: '2022-01-01',
-      time: '10:00 AM',
-      location: 'Location 1',
-      description: 'Description 1',
-      imageUrl: 'https://via.placeholder.com/150',
-    },
-    {
-      id: 2,
-      title: 'Event 2',
-      date: '2022-02-02',
-      time: '2:00 PM',
-      location: 'Location 2',
-      description: 'Description 2',
-      imageUrl: 'https://via.placeholder.com/150',
-    },
-    {
-      id: 3,
-      title: 'Event 3',
-      date: '2022-03-03',
-      time: '6:00 PM',
-      location: 'Location 3',
-      description: 'Description 3',
-      imageUrl: 'https://via.placeholder.com/150',
-    },
-  ];
+  events = events;
 }
