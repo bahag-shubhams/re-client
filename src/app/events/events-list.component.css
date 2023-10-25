@@ -50,15 +50,17 @@
   font-size: 0.8rem;
 }
 
-.card .details button:hover {
-  background-color: #0062cc;
-}
-
-.card.selected {
-  background-color: grey;
-  color: white;
-}
-
 .card .card-title {
   font-weight: bold; /* change the font weight of the card title */
+}
+
+.card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* align the card body content to the start and end */
+  height: 100%;
+}
+
+.card .like-button {
+  margin-top: auto; /* move the button to the end of the card */
 }

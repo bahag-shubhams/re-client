@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4" *ngFor="let event of events; let i = index">
-      <div
-        class="card my-3"
-        [ngClass]="{ selected: event.selected }"
-        (click)="toggleSelected(event)"
-      >
+      <div class="card my-3" [ngClass]="{ selected: event.selected }">
         <div class="card-body">
           <h5 class="card-title">{{ event.title }}</h5>
           <p class="card-text">{{ event.description }}</p>
           <p class="card-text">{{ event.location }}</p>
+          <button class="btn btn-primary" (click)="showDetails(event)">
+            More Details
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
+<!-- (click)="toggleSelected(event)" -->

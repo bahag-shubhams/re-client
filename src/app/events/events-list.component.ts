@@ -29,14 +29,11 @@ const events: Event[] = [
   styleUrls: ['./events-list.component.css'],
 })
 export class EventsListComponent {
-  likeEvent(_t5: Event) {
+  showDetails(_t5: Event) {
     throw new Error('Method not implemented.');
   }
+
   events = events;
 
   constructor() {}
-
-  toggleSelected(event: Event): void {
-    event.selected = !event.selected;
-  }
 }
