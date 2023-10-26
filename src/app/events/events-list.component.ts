@@ -10,13 +10,37 @@ interface Event {
 
 const events: Event[] = [
   {
-    title: 'Event 1',
-    description: 'something cool',
+    title: 'Dance Class at Anthonys Place',
+    description: 'This event is a great opportunity for anyone who loves to dance or wants to learn how to dance. The event is held at Anthonys Place, which is a popular venue for dance classes and other events. The class is taught by experienced instructors who are passionate about dance and are dedicated to helping their students improve their skills. The event is open to people of all ages and skill levels, so whether youre a beginner or an experienced dancer, youll be able to enjoy the class and learn something new. The class covers a variety of dance styles, including salsa, tango, and ballroom dancing',
     location: 'Johns pizza',
     likes: 0,
   },
   {
-    title: 'Event 2',
+    title: 'Global Day of Respect 2023',
+    description: 'Mandatory Attendance',
+    location: 'Johns pizza',
+    likes: 0,
+  },
+  {
+    title: 'D&D Night',
+    description: 'some long text to see how it will look, some long text to see how it will look, some long text to see how it will look',
+    location: 'Johns pizza',
+    likes: 0,
+  },
+  {
+    title: 'Entrepreneurs Mannheim | Rooftop Barbecue',
+    description: 'something even cooler',
+    location: 'Johns Pizza Place, Gutenbergstrasse 21, Mannheim, 68161, Germany',
+    likes: 0,
+  },
+  {
+    title: 'Event 5',
+    description: 'some long text to see how it will look, some long text to see how it will look, some long text to see how it will look',
+    location: 'Johns pizza',
+    likes: 0,
+  },
+  {
+    title: 'Event 6',
     description: 'something even cooler',
     location: 'Johns pizza',
     likes: 0,
