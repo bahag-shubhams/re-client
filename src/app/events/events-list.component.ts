@@ -1,39 +1,32 @@
-import { Component } from '@angular/core';
-
-interface Event {
-  title: string;
-  description: string;
-  location: string;
-  likes: number;
-  selected?: boolean;
-}
-
-const events: Event[] = [
-  {
-    title: 'Event 1',
-    description: 'something cool',
-    location: 'Johns pizza',
-    likes: 0,
-  },
-  {
-    title: 'Event 2',
-    description: 'something even cooler',
-    location: 'Johns pizza',
-    likes: 0,
-  },
-];
+import { Component, OnInit } from '@angular/core';
+import { EventService } from './event.service';
+import { Event } from '../models/event';
 
 @Component({
   selector: 'app-events-list',
   templateUrl: './events-list.component.html',
   styleUrls: ['./events-list.component.css'],
 })
-export class EventsListComponent {
+export class EventsListComponent implements OnInit {
   showDetails(_t5: Event) {
     throw new Error('Method not implemented.');
   }
 
-  events = events;
+  events!: Event[];
+  
+  constructor(private eventService: EventService) {}
 
-  constructor() {}
+  getEvents(): void {
+    this.eventService.getEvents()
+    .subscribe(events => this.events = events);
+    }
+
+    addEvent(event: Event): void {
+      this.eventService.addEvent(event)
+      .subscribe(() => this.getEvents());
+      }
+
+      ngOnInit(): void {
+        this.getEvents();
+      }
 }
