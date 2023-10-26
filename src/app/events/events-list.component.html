@@ -23,14 +23,22 @@
     </div>
   </li>
 </ul> -->
-<div class="container">
+<div class="container mx-4 my-4">
   <div class="row">
-    <div class="col-md-4" *ngFor="let event of events; let i = index">
-      <div class="card my-3" [ngClass]="{ selected: event.selected }">
-        <div class="card-body">
+    <div class="col-md-3" *ngFor="let event of events; let i = index">
+      <div class="card mb-4" [ngClass]="{ selected: event.selected }">
+        <img class="card-img-top text-center" src="./assets/example-poster.jpg" alt="{{ event.title }}">
+        <div class="card-body d-flex flex-column" style="flex-grow: 1;">
           <h5 class="card-title">{{ event.title }}</h5>
-          <p class="card-text">{{ event.description }}</p>
-          <p class="card-text">{{ event.location }}</p>
+          <div class="text-truncate-container mb-2">
+            <p class="card-text description">{{ event.description }}</p>
+          </div>
+          <div class="text-truncate-container">
+            <p class="card-text location">{{ event.location }}</p>
+          </div>
+          <div class="text-truncate-container">
+            <p class="card-text date-time">07.NOV.2023 17:30 CET</p>
+          </div>
           <button class="btn btn-primary" (click)="showDetails(event)">
             More Details
           </button>

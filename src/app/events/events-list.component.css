@@ -1,10 +1,9 @@
 .card {
-  display: inline-block;
-  width: 200px; /* updated width */
-  height: 300px; /* updated height */
+  width: 18rem; /* updated width */
+  height: 28.125rem; /* updated height */
   margin: 5px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px #00000033;
   transition: all 0.3s ease;
 }
 
@@ -58,9 +57,32 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* align the card body content to the start and end */
-  height: 100%;
 }
 
 .card .like-button {
   margin-top: auto; /* move the button to the end of the card */
+}
+
+.text-truncate-container {
+  width: 15rem;
+}
+
+.text-truncate-container p {
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.description {
+  font-size: 14px; 
+  color: #6c757d;
+}
+
+.location {
+  font-family: Montserrat;
+}
+
+.date-time {
+  font-size: 14px; color: #6c757d; font-family: Montserrat;
 }
