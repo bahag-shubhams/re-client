@@ -1,15 +1,22 @@
 import { Component } from '@angular/core';
-const events = [
+
+interface Event {
+  title: string;
+  description: string;
+  location: string;
+  likes: number;
+  selected?: boolean;
+}
+
+const events: Event[] = [
   {
-    title: 'a mock event',
-    id: '51a7881c-aeb6-442b-85b7-2327cc080086',
-    description: 'something really cool',
-    location: 'Joes pizza',
+    title: 'Event 1',
+    description: 'something cool',
+    location: 'Johns pizza',
     likes: 0,
   },
   {
-    title: 'another mock event',
-    id: '2b699e91-b089-4745-a58d-d15667c79784',
+    title: 'Event 2',
     description: 'something even cooler',
     location: 'Johns pizza',
     likes: 0,
@@ -43,11 +50,18 @@ const events = [
     likes: 0,
   },
 ];
+
 @Component({
   selector: 'app-events-list',
   templateUrl: './events-list.component.html',
   styleUrls: ['./events-list.component.css'],
 })
 export class EventsListComponent {
+  showDetails(_t5: Event) {
+    throw new Error('Method not implemented.');
+  }
+
   events = events;
+
+  constructor() {}
 }
