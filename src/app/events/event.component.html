@@ -1,19 +1,31 @@
-<h1>Upcoming Events</h1>
+<h1>Events Details</h1>
 
-<div class="event">
-    <h2>Event 1</h2>
-    <p>Date: October 30, 2023</p>
-    <p>Time: 2:00 PM - 4:00 PM</p>
-    <p>Location: 123 Main Street, City, State</p>
-    <p>Description: This is the first event description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <img src="/Users/albukaees/event1.jpeg" alt="Event Image">
-</div>
+<div class="row">
+    <div class="col-lg-8 col-sm-offset-1">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>location</th>
+                    <th>Date</th>
+                    <th>Likes</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> {{event.title}}</td>
+                    <td>{{event.description}}</td>
+                    <td>{{event.location}}</td>
+                    <td>{{event.date}}</td>
+                    <td>{{event.liked}}</td>
+                    <td><img src={{event.imageUrl}} alt="event1"></td>
+                </tr>
 
-<div class="event">
-    <h2>Event 2</h2>
-    <p>Date: November 15, 2023</p>
-    <p>Time: 7:00 PM - 9:00 PM</p>
-    <p>Location: 456 Elm Street, City, State</p>
-    <p>Description: This is the second event description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <img src="/Users/albukaees/event2.jpeg" alt="Event Image">
-</div>
+                <tr>
+                    <td colspan="6"><button class="btn btn-primary" (click)="updateEvent()">Update</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

@@ -1,3 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import '/src/app/about/about.component.css';
+@import '/src/app/profile/profile.component.css';
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

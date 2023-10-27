@@ -1,39 +1,38 @@
-import { Component } from '@angular/core';
-
-interface Event {
-  title: string;
-  description: string;
-  location: string;
-  likes: number;
-  selected?: boolean;
-}
-
-const events: Event[] = [
-  {
-    title: 'Event 1',
-    description: 'something cool',
-    location: 'Johns pizza',
-    likes: 0,
-  },
-  {
-    title: 'Event 2',
-    description: 'something even cooler',
-    location: 'Johns pizza',
-    likes: 0,
-  },
-];
-
+import { Component, OnInit } from '@angular/core';
+import { EventService } from './event.service';
+import { Event } from '../models/event';
+import { Router } from '@angular/router';
+import {faTrash} from '@fortawesome/free-solid-svg-icons';
+import {faCalendar} from '@fortawesome/free-regular-svg-icons';
 @Component({
   selector: 'app-events-list',
   templateUrl: './events-list.component.html',
   styleUrls: ['./events-list.component.css'],
 })
-export class EventsListComponent {
-  showDetails(_t5: Event) {
-    throw new Error('Method not implemented.');
+export class EventsListComponent implements OnInit {
+  showDetails(event: Event) {
+    this.router.navigate(['/event/' + event.id]);
   }
 
-  events = events;
+  events!: Event[];
+  deleteEvent(event: Event) {
+    this.eventService.deleteEvent(event.id).subscribe(() => this.getEvents());
+  }
 
-  constructor() {}
+  faTrash = faTrash;
+  faCalendar = faCalendar;
+
+  constructor(private eventService: EventService, private router: Router) {}
+
+  getEvents(): void {
+    this.eventService.getEvents().subscribe((events) => (this.events = events));
+  }
+
+  addEvent(event: Event): void {
+    this.eventService.addEvent(event).subscribe(() => this.getEvents());
+  }
+
+  ngOnInit(): void {
+    this.getEvents();
+  }
 }
