@@ -7,18 +7,24 @@ import { EventsListComponent } from './events/events-list.component';
 import { EventComponent } from './events/event.component';
 import { AboutComponent } from './about/about.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { EventUpdateComponent } from './events/event-update.component';
+import { EventAddComponent } from './events/event-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventsListComponent,
     EventComponent,
-    AboutComponent
+    AboutComponent,
+    EventUpdateComponent,
+    EventAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
