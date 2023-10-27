@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EventUpdateComponent } from './events/event-update.component';
 import { EventAddComponent } from './events/event-add.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProfileComponent } from './profile/profile.component';
 import { AddFormComponent } from './events/add-form.component';
 import { FormsModule } from '@angular/forms';
 
@@ -21,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     AboutComponent,
     EventUpdateComponent,
     EventAddComponent,
+    ProfileComponent,
     AddFormComponent
   ],
   imports: [

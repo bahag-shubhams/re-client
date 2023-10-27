@@ -1,0 +1,62 @@
+.profile-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+}
+
+.profile-name {
+    font-size: 24px;
+    margin-top: 10px;
+    color: #333;
+}
+
+.profile-position {
+    font-size: 18px;
+    color: #777;
+}
+
+.profile-hobbies {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #333;
+}
+
+.events-scroll {
+    margin-top: 20px;
+}
+
+.events-list {
+    display: flex;
+    overflow-x: auto;
+}
+
+.event {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-image {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
