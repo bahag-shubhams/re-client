@@ -4,6 +4,9 @@ export class Event {
         public id: string,
         public description: string,
         public location: string,
-        public liked: number
+        public imageUrl: string,
+        public liked: number,
+        public date: string,
+        public selected?: boolean
     ) {}
 }

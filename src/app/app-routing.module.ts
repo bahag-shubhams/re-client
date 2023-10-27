@@ -18,7 +18,7 @@ const routes: Routes = [
     component: AboutComponent
   },
   {
-    path: 'event',
+    path: 'event/:id',
     component: EventComponent
   },
   {

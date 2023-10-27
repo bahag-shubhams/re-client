@@ -1,25 +1,26 @@
 import { Component } from '@angular/core';
+import { Event } from '../models/event';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
-interface Event {
-  title: string;
-  description: string;
-  location: string;
-  likes: number;
-  selected?: boolean;
-}
-
-const events: Event[] = [
+export const events: Event[] = [
   {
-    title: 'Event 1',
-    description: 'something cool',
-    location: 'Johns pizza',
-    likes: 0,
-  },
+    title: 'Agile Practice',
+    id: '1',
+    description: '',
+    imageUrl: '/Users/albukaees/event1.jpeg',
+    location: 'Neckarpromenade 15, 66778 Germany',
+    liked: 2,
+    date: '2023,10,28',
+  }, 
   {
-    title: 'Event 2',
-    description: 'something even cooler',
-    location: 'Johns pizza',
-    likes: 0,
+    title: 'aaaaa',
+    id: '2',
+    description: '',
+    imageUrl: '/Users/albukaees/event1.jpeg',
+    location: 'England',
+    liked: 2,
+    date: '2023,10,28',
   },
 ];
 
@@ -29,11 +30,12 @@ const events: Event[] = [
   styleUrls: ['./events-list.component.css'],
 })
 export class EventsListComponent {
-  showDetails(_t5: Event) {
-    throw new Error('Method not implemented.');
+  showDetails(event: Event) {
+    console.log('sssss'); 
+    this.router.navigate(['/event/' + event.id]);
   }
 
-  events = events;
+  events: Event[] = events;
 
-  constructor() {}
+  constructor(private router: Router) {}
 }
