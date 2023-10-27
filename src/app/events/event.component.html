@@ -22,7 +22,10 @@
                     <td>{{event.liked}}</td>
                     <td><img src={{event.imageUrl}} alt="event1"></td>
                 </tr>
-                <button (click)="updateEvent()">Update</button>
+
+                <tr>
+                    <td colspan="6"><button class="btn btn-primary" (click)="updateEvent()">Update</button></td>
+                </tr>
             </tbody>
         </table>
     </div>

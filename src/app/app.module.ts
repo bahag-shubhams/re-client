@@ -12,6 +12,7 @@ import { EventUpdateComponent } from './events/event-update.component';
 import { EventAddComponent } from './events/event-add.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from './profile/profile.component';
+import { AddFormComponent } from './add-form/add-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProfileComponent } from './profile/profile.component';
     AboutComponent,
     EventUpdateComponent,
     EventAddComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddFormComponent
   ],
   imports: [
     BrowserModule,
