@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { EventsListComponent } from './events/events-list.component';
 import { AboutComponent } from './about/about.component';
 import { EventComponent } from './events/event.component';
+import { EventAddComponent } from './events/event-add.component';
+import { EventUpdateComponent } from './events/event-update.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,14 @@ const routes: Routes = [
   {
     path: 'event',
     component: EventComponent
+  },
+  {
+    path: 'event/:id/add',
+    component: EventAddComponent
+  },
+  {
+    path: 'event/:id/update',
+    component: EventUpdateComponent
   },
   {
     path: '**',
