@@ -11,10 +11,19 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   private URL = 'http://localhost:8082/events';
+  private EVENT_URL = 'http://localhost:8082/event';
 
 
   getEvents(): Observable<Event[]>{
     return this.http.get<Event[]>(`${this.URL}`);
+  }
+
+  getEvent(id: string): Observable<Event>{
+    return this.http.get<Event>(`${this.EVENT_URL}/${id}`);
+  }
+
+  deleteEvent(id: string): Observable<Event>{
+    return this.http.delete<Event>(`${this.EVENT_URL}/${id}`);
   }
 
   addEvent(event: Event): Observable<Event> {

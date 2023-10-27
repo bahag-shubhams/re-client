@@ -1,10 +1,11 @@
 .card {
-  display: inline-block;
-  width: 200px; /* updated width */
-  height: 300px; /* updated height */
+  max-width: 18rem; /* updated width */
+  max-height: 28.125rem; /* updated height */
+  height: 100%; /* Let the height adjust based on content */
+  width: 100%; /* Allow the card to expand to its container's width */
   margin: 5px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px #00000033;
   transition: all 0.3s ease;
 }
 
@@ -39,15 +40,14 @@
   margin: 0;
 }
 
-.card .details button {
+.details-button {
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 5px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 0.8rem;
+  width: 100%;
 }
 
 .card .card-title {
@@ -58,9 +58,44 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* align the card body content to the start and end */
-  height: 100%;
 }
 
 .card .like-button {
   margin-top: auto; /* move the button to the end of the card */
+}
+
+.text-truncate-container {
+  width: 15rem;
+}
+
+.text-truncate-container p {
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.description {
+  font-size: 14px; 
+  color: #6c757d;
+}
+
+.location {
+  font-family: Montserrat;
+}
+
+.date-div {
+  display: flex; 
+  align-items: center;
+}
+
+.date-time {
+  font-size: 14px; 
+  color: #6c757d; 
+  font-family: Montserrat;
+}
+
+.calendar-icon {
+  color: #6c757d; 
+  padding-right: 5px;
 }
