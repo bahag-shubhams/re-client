@@ -1,30 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../models/event';
 import { ActivatedRoute } from '@angular/router';
-import { Route } from '@angular/router';
-import { events } from './events-list.component';
+import { Observable } from 'rxjs';
+import { EventService } from './event.service';
 
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css']
+  styleUrls: ['./event.component.css'],
 })
 export class EventComponent implements OnInit {
+  event!: Event;
 
-  event: Event = new Event('', '', '', '', '', -1, '');
-
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private eventService: EventService
+  ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      // TODO: find event in events array by id
-      this.event = events.find(x => x.id == id)!;
+      this.eventService.getEvent(id).subscribe((event) => (this.event = event));
     }
   }
 
   updateEvent() {
-  
     console.log('Event updated');
   }
 }

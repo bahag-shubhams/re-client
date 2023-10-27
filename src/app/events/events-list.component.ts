@@ -14,20 +14,18 @@ export class EventsListComponent implements OnInit {
   }
 
   events!: Event[];
-  
+
   constructor(private eventService: EventService, private router: Router) {}
 
   getEvents(): void {
-    this.eventService.getEvents()
-    .subscribe(events => this.events = events);
-    }
+    this.eventService.getEvents().subscribe((events) => (this.events = events));
+  }
 
-    addEvent(event: Event): void {
-      this.eventService.addEvent(event)
-      .subscribe(() => this.getEvents());
-      }
+  addEvent(event: Event): void {
+    this.eventService.addEvent(event).subscribe(() => this.getEvents());
+  }
 
-      ngOnInit(): void {
-        this.getEvents();
-      }
+  ngOnInit(): void {
+    this.getEvents();
+  }
 }
