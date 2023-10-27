@@ -36,12 +36,26 @@
           <div class="text-truncate-container">
             <p class="card-text location">{{ event.location }}</p>
           </div>
-          <div class="text-truncate-container">
-            <p class="card-text date-time">07.NOV.2023 17:30 CET</p>
+          <div class="date-div">
+            <div>
+              <fa-icon class="calendar-icon" [icon]="faCalendar"></fa-icon>
+            </div>
+            <div>
+              <p class="card-text date-time">07.NOV.2023 17:30 CET</p>
+            </div>
           </div>
-          <button class="btn btn-primary" (click)="showDetails(event)">
-            More Details
-          </button>
+          <div class="row justify-content-center align-items-center">
+            <div class="col-md-9">
+              <button class="btn btn-primary details-button" (click)="showDetails(event)">
+                More Details
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-danger" (click)="deleteEvent(event)">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

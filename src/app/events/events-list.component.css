@@ -1,6 +1,8 @@
 .card {
-  width: 18rem; /* updated width */
-  height: 28.125rem; /* updated height */
+  max-width: 18rem; /* updated width */
+  max-height: 28.125rem; /* updated height */
+  height: 100%; /* Let the height adjust based on content */
+  width: 100%; /* Allow the card to expand to its container's width */
   margin: 5px;
   border-radius: 10px;
   box-shadow: 0 0 10px #00000033;
@@ -38,15 +40,14 @@
   margin: 0;
 }
 
-.card .details button {
+.details-button {
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 5px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 0.8rem;
+  width: 100%;
 }
 
 .card .card-title {
@@ -83,6 +84,18 @@
   font-family: Montserrat;
 }
 
+.date-div {
+  display: flex; 
+  align-items: center;
+}
+
 .date-time {
-  font-size: 14px; color: #6c757d; font-family: Montserrat;
+  font-size: 14px; 
+  color: #6c757d; 
+  font-family: Montserrat;
+}
+
+.calendar-icon {
+  color: #6c757d; 
+  padding-right: 5px;
 }
