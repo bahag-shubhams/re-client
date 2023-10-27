@@ -15,8 +15,8 @@ export class EventsListComponent implements OnInit {
   }
 
   events!: Event[];
-  deleteEvent(_t5: Event) {
-    throw new Error('Method not implemented.')
+  deleteEvent(event: Event) {
+    this.eventService.deleteEvent(event.id).subscribe(() => this.getEvents());
   }
 
   faTrash = faTrash;
