@@ -7,13 +7,15 @@ import { EventsListComponent } from './events/events-list.component';
 import { EventComponent } from './events/event.component';
 import { AboutComponent } from './about/about.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddFormComponent } from './add-form/add-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventsListComponent,
     EventComponent,
-    AboutComponent
+    AboutComponent,
+    AddFormComponent
   ],
   imports: [
     BrowserModule,
