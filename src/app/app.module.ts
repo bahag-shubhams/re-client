@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventsListComponent } from './events/events-list.component';
@@ -12,7 +11,8 @@ import { EventUpdateComponent } from './events/event-update.component';
 import { EventAddComponent } from './events/event-add.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from './profile/profile.component';
-import { AddFormComponent } from './add-form/add-form.component';
+import { AddFormComponent } from './events/add-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { AddFormComponent } from './add-form/add-form.component';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
