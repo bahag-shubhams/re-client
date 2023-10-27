@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EventUpdateComponent } from './events/event-update.component';
 import { EventAddComponent } from './events/event-add.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     EventComponent,
     AboutComponent,
     EventUpdateComponent,
-    EventAddComponent
+    EventAddComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

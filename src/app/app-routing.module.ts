@@ -5,6 +5,7 @@ import { AboutComponent } from './about/about.component';
 import { EventComponent } from './events/event.component';
 import { EventAddComponent } from './events/event-add.component';
 import { EventUpdateComponent } from './events/event-update.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'event/:id/update',
     component: EventUpdateComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
   {
     path: '**',
