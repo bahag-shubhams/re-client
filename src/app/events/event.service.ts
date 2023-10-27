@@ -12,6 +12,7 @@ export class EventService {
 
   private URL = 'http://localhost:8082/events';
 
+
   getEvents(): Observable<Event[]>{
     return this.http.get<Event[]>(`${this.URL}`);
   }
@@ -20,4 +21,6 @@ export class EventService {
     return this.http.post<Event>(
     `${this.URL}`, event);
     }
+
+  
 }

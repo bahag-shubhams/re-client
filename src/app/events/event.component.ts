@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Event } from '../models/event';
 import { ActivatedRoute } from '@angular/router';
 import { Route } from '@angular/router';
-import { events } from './events-list.component';
+
 
 @Component({
   selector: 'app-event',
@@ -17,10 +17,9 @@ export class EventComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      // TODO: find event in events array by id
-      this.event = events.find(x => x.id == id)!;
-    }
+   // if (id) {     
+   //   this.event = events.find((e: Event) => e.id == id)!;
+    //}
   }
 
   updateEvent() {
