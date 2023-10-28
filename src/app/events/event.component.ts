@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../models/event';
 import { ActivatedRoute } from '@angular/router';
-import { Route } from '@angular/router';
-
-import { Observable } from 'rxjs';
 import { EventService } from './event.service';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-event',
@@ -16,7 +15,8 @@ export class EventComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private eventService: EventService
+    private eventService: EventService,
+    private updateModalService: NgbModal,
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +26,23 @@ export class EventComponent implements OnInit {
     }
   }
 
-  updateEvent() {
-    console.log('Event updated');
+  openUpdateModal(content: any) {
+    this.updateModalService.open(content).result.then(
+			() => {
+				console.log("hello");
+			});
+  }
+
+  onSubmit(form: NgForm){
+    console.log("form : " + form.value)
+    form.value["id"] = this.event.id;
+    this.eventService.patchEvent(form.value).subscribe(()=>{
+      this.ngOnInit();
+    })
+    this.updateModalService.dismissAll();
+  }
+
+  closeModal(){
+    this.updateModalService.dismissAll();
   }
 }

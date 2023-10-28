@@ -32,5 +32,8 @@ export class EventService {
     `${this.EVENT_URL}`, event);
     }
 
-  
+  patchEvent(event: Event): Observable<Object>{
+    console.log("patching Event" + event);
+    return this.http.put(`${this.EVENT_URL}`, event);
+  }
 }

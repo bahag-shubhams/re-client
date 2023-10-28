@@ -1,31 +1,68 @@
-<h1>Events Details</h1>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Update Event</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+        <form #eventUpdateForm="ngForm" (ngSubmit)="onSubmit(eventUpdateForm)" novalidate>
+            <div class="mb-3 form-group">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" id="title" [(ngModel)]="event.title" ngModel />
+            </div>
+            <div class="mb-3 form-group">
+                <label for="description" class="form-label">Description</label>
+                <textarea type="text" class="form-control" name="description" id="description"
+                    [(ngModel)]="event.description" ngModel></textarea>
+            </div>
+            <div class="mb-3 form-group">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" name="location" id="location" [(ngModel)]="event.location"
+                    ngModel />
+            </div>
+            <div class="mb-3 form-group">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" name="date" id="date" [(ngModel)]="event.date" ngModel />
+            </div>
+            <div class="text-center">
+                <button class="btn btn-outline-dark" type="submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</ng-template>
 
-<div class="row">
-    <div class="col-lg-8 col-sm-offset-1">
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>location</th>
-                    <th>Date</th>
-                    <th>Likes</th>
-                    <th>Image</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td> {{event.title}}</td>
-                    <td>{{event.description}}</td>
-                    <td>{{event.location}}</td>
-                    <td>{{event.date}}</td>
-                    <td>{{event.liked}}</td>
-                    <td><img src={{event.imageUrl}} alt="event1"></td>
-                </tr>
+<div class="container">
+    <h1>Events Details</h1>
+    <div class="row">
+        <div class="col-lg-8 col-sm-offset-1">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>location</th>
+                        <th>Date</th>
+                        <th>Likes</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> {{event.title}}</td>
+                        <td>{{event.description}}</td>
+                        <td>{{event.location}}</td>
+                        <td>{{event.date | date}}</td>
+                        <td>{{event.liked}}</td>
+                        <td><img src={{event.imageUrl}} alt="event1"></td>
+                    </tr>
 
-                <tr>
-                    <td colspan="6"><button class="btn btn-primary" (click)="updateEvent()">Update</button></td>
-                </tr>
-            </tbody>
-        </table>
+                    <tr>
+                        <td colspan="6"><button class="btn btn-primary"
+                                (click)="openUpdateModal(content)">Update</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
