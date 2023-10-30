@@ -12,7 +12,7 @@ import { EventAddComponent } from './events/event-add.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from './profile/profile.component';
 import { AddFormComponent } from './events/add-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     EventUpdateComponent,
     EventAddComponent,
     ProfileComponent,
-    AddFormComponent
+    AddFormComponent,
+    
   ],
   imports: [
     BrowserModule,
