@@ -11,12 +11,12 @@ import {faCalendar} from '@fortawesome/free-regular-svg-icons';
 })
 export class EventsListComponent implements OnInit {
   showDetails(event: Event) {
-    this.router.navigate(['/event/' + event.id]);
+    this.router.navigate(['/event/' + event.eventid]);
   }
 
   events!: Event[];
   deleteEvent(event: Event) {
-    this.eventService.deleteEvent(event.id).subscribe(() => this.getEvents());
+    this.eventService.deleteEvent(event.eventid).subscribe(() => this.getEvents());
   }
 
   faTrash = faTrash;
@@ -25,7 +25,7 @@ export class EventsListComponent implements OnInit {
   constructor(private eventService: EventService, private router: Router) {}
 
   getEvents(): void {
-    this.eventService.getEvents().subscribe((events) => (this.events = events));
+    this.eventService.getEvents().subscribe((events) => {this.events = events; console.log(events)});
   }
 
   addEvent(event: Event): void {
@@ -34,5 +34,6 @@ export class EventsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEvents();
+    console.log(this.events);
   }
 }

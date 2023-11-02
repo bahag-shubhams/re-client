@@ -1,31 +1,86 @@
-<h1>Events Details</h1>
-
-<div class="row">
-    <div class="col-lg-8 col-sm-offset-1">
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>location</th>
-                    <th>Date</th>
-                    <th>Likes</th>
-                    <th>Image</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td> {{event.title}}</td>
-                    <td>{{event.description}}</td>
-                    <td>{{event.location}}</td>
-                    <td>{{event.date}}</td>
-                    <td>{{event.liked}}</td>
-                    <td><img src={{event.imageUrl}} alt="event1"></td>
-                </tr>
-
-                <tr>
-                    <td colspan="6"><button class="btn btn-primary" (click)="updateEvent()">Update</button></td>
-                </tr>
-            </tbody>
-        </table>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Update Event</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
     </div>
+    <div class="modal-body">
+        <form #eventUpdateForm="ngForm" (ngSubmit)="onSubmit(eventUpdateForm)" novalidate>
+            <div class="mb-3 form-group">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" id="title" [(ngModel)]="event.title" ngModel />
+            </div>
+            <div class="mb-3 form-group">
+                <label for="description" class="form-label">Description</label>
+                <textarea type="text" class="form-control" name="description" id="description"
+                    [(ngModel)]="event.event_description" ngModel></textarea>
+            </div>
+            <div class="mb-3 form-group">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" name="location" id="location" [(ngModel)]="event.loc"
+                    ngModel />
+            </div>
+            <div class="mb-3 form-group">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" name="date" id="date" [(ngModel)]="event.dat" ngModel />
+            </div>
+            <div class="text-center">
+                <button class="btn btn-outline-dark" type="submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<!-- <div class="container">
+    <h1>Events Details</h1>
+    <div class="row">
+        <div class="col-lg-8 col-sm-offset-1">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>location</th>
+                        <th>Date</th>
+                        <th>Likes</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> {{event.title}}</td>
+                        <td>{{event.event_description}}</td>
+                        <td>{{event.loc}}</td>
+                        <td>{{event.dat | date}}</td>
+                        <td><img src={{event.imageUrl}} alt="event1"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="6"><button class="btn btn-primary"
+                                (click)="openUpdateModal(content)">Update</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div> -->
+<div class="container">
+    <h1>{{event.title}}</h1>
+    <div class="event-container row">
+        <div class="col-md-6 event-image-container">
+            <img class="event-image" src="./assets/example-poster.jpg" alt="Event Image">
+        </div>
+        <div class="event-details col-md-6">
+            <p><strong>Description:</strong> {{event.event_description}}</p>
+            <p><strong>Location:</strong> {{event.loc}}</p>
+            <p><strong>Date:</strong> {{event.dat}}</p>
+            <p><strong>Likes:</strong> {{event.liked}}</p>
+
+            <div class="text-center">
+                <button class="btn btn-primary mx-2">Attend</button>
+                <button class="btn btn-primary" (click)="openUpdateModal(content)">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

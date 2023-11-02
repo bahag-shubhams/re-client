@@ -1,0 +1,31 @@
+.ng-valid[required] {
+    border-left: 5px solid #28a745;
+    background-color: #E1FFE6;
+    color: #155724;
+    box-shadow: 0 0 5px rgba(54, 217, 116, 0.5);
+    transition: border-color 0.3s, background-color 0.3s; 
+    border-radius: 5px;
+    }
+    .ng-invalid {
+    border-left: 5px solid #dc3545; 
+    color: #842029;
+    border-radius: 5px;
+
+    }
+
+    .ng-valid[required]:hover {
+        transform: scale(1.02);
+      }
+
+    .ng-invalid:hover {
+        transform: scale(1.02);
+      }
+
+      .btn-secondary {
+        background-color: #007BFF; 
+        color: #FFF;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+
+    }
