@@ -21,15 +21,49 @@
         <form #addEventForm="ngForm" name="addEventForm" (ngSubmit)="submit()">
           <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" name="title" #title="ngModel" [(ngModel)] = "event.title" id="title" />
+            <input type="text" class="form-control" minlength="5" required name="title" #title="ngModel" [(ngModel)] = "event.title" id="title" />
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+              <div *ngIf="title.errors?.['required']">
+                Title is required.
+              </div>
+              <div *ngIf="title.errors?.['minlength']">
+                Title must be at least 5 characters long.
+              </div>
+            </div>
           </div>
+          
           <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" name="description" #description="ngModel" [(ngModel)] = "event.event_description" rows="3" ></textarea>
+            <textarea class="form-control" id="description" required name="description" #description="ngModel" [(ngModel)] = "event.event_description" rows="3" required minlength="10" maxlength="500" ></textarea>
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+              <div *ngIf="description.errors?.['required']">
+                Description is required.
+              </div>
+              <div *ngIf="description.errors?.['minlength']">
+                Description must be at least 10 characters long.
+              </div>
+              <div *ngIf="description.errors?.['maxlength']">
+                Description cannot exceed 500 characters.
+              </div>
+            </div>
           </div>
           <div class="mb-3">
             <label for="location" class="form-label">Location</label>
-            <input type="text" class="form-control" name="location" #location="ngModel" [(ngModel)] = "event.loc" id="location" />
+            <input type="text" class="form-control" required name="location" #location="ngModel" [(ngModel)] = "event.loc" id="location" required minlength="3" maxlength="50" pattern="^[A-Za-z0-9\s\-]+$"/>
+            <div *ngIf="location.invalid && (location.dirty || location.touched)" class="alert alert-danger">
+              <div *ngIf="location.errors?.['required']">
+                Location is required.
+              </div>
+              <div *ngIf="location.errors?.['minlength']">
+                Location must be at least 3 characters long.
+              </div>
+              <div *ngIf="location.errors?.['maxlength']">
+                Location cannot exceed 50 characters.
+              </div>
+              <div *ngIf="location.errors?.['pattern']">
+                Location can only contain letters, numbers, spaces, and hyphens.
+              </div>
+            </div>
           </div>
           <!-- <div class="mb-3">
             <label for="id" class="form-label">ID</label>
@@ -37,7 +71,12 @@
           </div> -->
           <div class="mb-3">
             <label for="date" class="form-label">Date</label>
-            <input type="date" class="form-control" name="date" #date="ngModel" [(ngModel)] = "event.dat" id="date" />
+            <input type="date" class="form-control" required name="date" #date="ngModel" [(ngModel)] = "event.dat" id="date" />
+            <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
+              <div *ngIf="date.errors?.['required']">
+                Date is required.
+              </div>
+            </div>
           </div>
           <!-- <div class="mb-3">
             <label for="image" class="form-label">Image</label>
@@ -47,7 +86,7 @@
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               Close
             </button>
-            <button type="submit" class="btn btn-primary">Add Event</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!addEventForm.form.valid"> Add Event</button>
           </div>
         </form>
       </div>
