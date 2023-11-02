@@ -25,11 +25,11 @@
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" name="description" #description="ngModel" [(ngModel)] = "event.description" rows="3" ></textarea>
+            <textarea class="form-control" id="description" name="description" #description="ngModel" [(ngModel)] = "event.event_description" rows="3" ></textarea>
           </div>
           <div class="mb-3">
             <label for="location" class="form-label">Location</label>
-            <input type="text" class="form-control" name="location" #location="ngModel" [(ngModel)] = "event.location" id="location" />
+            <input type="text" class="form-control" name="location" #location="ngModel" [(ngModel)] = "event.loc" id="location" />
           </div>
           <!-- <div class="mb-3">
             <label for="id" class="form-label">ID</label>
@@ -37,7 +37,7 @@
           </div> -->
           <div class="mb-3">
             <label for="date" class="form-label">Date</label>
-            <input type="date" class="form-control" name="date" #date="ngModel" [(ngModel)] = "event.date" id="date" />
+            <input type="date" class="form-control" name="date" #date="ngModel" [(ngModel)] = "event.dat" id="date" />
           </div>
           <!-- <div class="mb-3">
             <label for="image" class="form-label">Image</label>

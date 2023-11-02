@@ -1,11 +1,11 @@
 export class Event {
     constructor(
         public title: string,
-        public id: string,
-        public description: string,
-        public location: string,
-        public imageUrl: string,
-        public liked: number,
-        public date: string
+        public event_description: string,
+        public loc: string,
+        public dat: string,
+        public eventid: number,
+        public liked : number,
+        public imageUrl: string
     ) {}
 }

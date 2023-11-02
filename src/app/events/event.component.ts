@@ -35,7 +35,7 @@ export class EventComponent implements OnInit {
 
   onSubmit(form: NgForm){
     console.log("form : " + form.value)
-    form.value["id"] = this.event.id;
+    form.value["id"] = this.event.eventid;
     this.eventService.patchEvent(form.value).subscribe(()=>{
       this.ngOnInit();
     })

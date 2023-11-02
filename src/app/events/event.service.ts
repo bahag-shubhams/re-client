@@ -10,8 +10,8 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  private URL = 'http://localhost:8082/events';
-  private EVENT_URL = 'http://localhost:8082/event';
+  private URL = 'http://localhost:5000/api/events';
+  private EVENT_URL = 'http://localhost:5000/api/event';
 
 
   getEvents(): Observable<Event[]>{
@@ -22,7 +22,7 @@ export class EventService {
     return this.http.get<Event>(`${this.EVENT_URL}/${id}`);
   }
 
-  deleteEvent(id: string): Observable<Event>{
+  deleteEvent(id: number): Observable<Event>{
     return this.http.delete<Event>(`${this.EVENT_URL}/${id}`);
   }
 

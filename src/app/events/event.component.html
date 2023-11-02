@@ -12,16 +12,16 @@
             <div class="mb-3 form-group">
                 <label for="description" class="form-label">Description</label>
                 <textarea type="text" class="form-control" name="description" id="description"
-                    [(ngModel)]="event.description" ngModel></textarea>
+                    [(ngModel)]="event.event_description" ngModel></textarea>
             </div>
             <div class="mb-3 form-group">
                 <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" name="location" id="location" [(ngModel)]="event.location"
+                <input type="text" class="form-control" name="location" id="location" [(ngModel)]="event.loc"
                     ngModel />
             </div>
             <div class="mb-3 form-group">
                 <label for="date" class="form-label">Date</label>
-                <input type="date" class="form-control" name="date" id="date" [(ngModel)]="event.date" ngModel />
+                <input type="date" class="form-control" name="date" id="date" [(ngModel)]="event.dat" ngModel />
             </div>
             <div class="text-center">
                 <button class="btn btn-outline-dark" type="submit">
@@ -50,10 +50,9 @@
                 <tbody>
                     <tr>
                         <td> {{event.title}}</td>
-                        <td>{{event.description}}</td>
-                        <td>{{event.location}}</td>
-                        <td>{{event.date | date}}</td>
-                        <td>{{event.liked}}</td>
+                        <td>{{event.event_description}}</td>
+                        <td>{{event.loc}}</td>
+                        <td>{{event.dat | date}}</td>
                         <td><img src={{event.imageUrl}} alt="event1"></td>
                     </tr>
 
