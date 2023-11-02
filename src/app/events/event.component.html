@@ -1,31 +1,19 @@
-<h1>Events Details</h1>
+<div class="container">
+    <h1>{{event.title}}</h1>
+    <div class="event-container row">
+        <div class="col-md-6 event-image-container">
+            <img class="event-image" src="./assets/example-poster.jpg" alt="Event Image">
+        </div>
+        <div class="event-details col-md-6">
+            <p><strong>Description:</strong> {{event.description}}</p>
+            <p><strong>Location:</strong> {{event.location}}</p>
+            <p><strong>Date:</strong> {{event.date}}</p>
+            <p><strong>Likes:</strong> {{event.liked}}</p>
 
-<div class="row">
-    <div class="col-lg-8 col-sm-offset-1">
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>location</th>
-                    <th>Date</th>
-                    <th>Likes</th>
-                    <th>Image</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td> {{event.title}}</td>
-                    <td>{{event.description}}</td>
-                    <td>{{event.location}}</td>
-                    <td>{{event.date}}</td>
-                    <td>{{event.liked}}</td>
-                    <td><img src={{event.imageUrl}} alt="event1"></td>
-                </tr>
-
-                <tr>
-                    <td colspan="6"><button class="btn btn-primary" (click)="updateEvent()">Update</button></td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="text-center">
+                <button class="btn btn-primary mx-2">Attend</button>
+                <button class="btn btn-primary" (click)="updateEvent()">Update</button>
+            </div>
+        </div>
     </div>
+</div>
