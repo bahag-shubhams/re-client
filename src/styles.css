@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import '/src/app/about/about.component.css';
 @import '/src/app/profile/profile.component.css';
+@import '/src/app/events/event.component.css';
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 @font-face {
