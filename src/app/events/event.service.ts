@@ -30,7 +30,7 @@ export class EventService {
   addEvent(event: Event): Observable<Event> {
     console.log("event" + event);
     return this.http.post<Event>(
-    `${this.EVENT_URL}`, event);
+    `${this.URL}`, event);
     }
 
   patchEvent(event: Event): Observable<Object>{
