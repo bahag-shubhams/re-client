@@ -8,6 +8,7 @@ import { enableProdMode } from '@angular/core';
 
 
 if (environment.production) {
+  console.log("production mode");
   enableProdMode();
 }
 

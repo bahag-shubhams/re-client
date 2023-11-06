@@ -29,6 +29,7 @@ export class EventService {
 
   addEvent(event: Event): Observable<Event> {
     console.log("event" + event);
+    console.log("event url" + this.EVENT_URL);
     return this.http.post<Event>(
     `${this.EVENT_URL}`, event);
     }

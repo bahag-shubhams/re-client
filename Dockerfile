@@ -1,11 +1,10 @@
 FROM node:18 as build
-
 WORKDIR /usr/src/app
-COPY ./ /usr/src/app/
-
+RUN npm i -g @angular/cli 
+COPY package.json package.json 
 RUN npm install
-RUN npm run build
+COPY . .
+RUN ng build
 
 FROM nginx:latest
 COPY --from=build /usr/src/app/dist/re-client /usr/share/nginx/html
-EXPOSE 4200
