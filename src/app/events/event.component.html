@@ -11,17 +11,16 @@
             </div>
             <div class="mb-3 form-group">
                 <label for="description" class="form-label">Description</label>
-                <textarea type="text" class="form-control" name="description" id="description"
+                <textarea type="text" class="form-control" name="event_description" id="event_description"
                     [(ngModel)]="event.event_description" ngModel></textarea>
             </div>
             <div class="mb-3 form-group">
                 <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" name="location" id="location" [(ngModel)]="event.loc"
-                    ngModel />
+                <input type="text" class="form-control" name="loc" id="loc" [(ngModel)]="event.loc" ngModel />
             </div>
             <div class="mb-3 form-group">
                 <label for="date" class="form-label">Date</label>
-                <input type="date" class="form-control" name="date" id="date" [(ngModel)]="event.dat" ngModel />
+                <input type="date" class="form-control" name="dat" id="dat" [(ngModel)]="event.dat" ngModel />
             </div>
             <div class="text-center">
                 <button class="btn btn-outline-dark" type="submit">
