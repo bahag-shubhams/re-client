@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Event } from '../models/event';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  private URL = 'http://localhost:5000/api/events';
-  private EVENT_URL = 'http://localhost:5000/api/event';
+  private URL = environment.url + '/events';
+  private EVENT_URL =  environment.url + '/event';
 
 
   getEvents(): Observable<Event[]>{
