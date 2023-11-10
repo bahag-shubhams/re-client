@@ -13,6 +13,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from './profile/profile.component';
 import { AddFormComponent } from './events/add-form.component';
 import { FormsModule} from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MapViewComponent } from './events/map-view.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +26,14 @@ import { FormsModule} from '@angular/forms';
     EventAddComponent,
     ProfileComponent,
     AddFormComponent,
-    
+    MapViewComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FontAwesomeModule, FormsModule
+    FontAwesomeModule, FormsModule, GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

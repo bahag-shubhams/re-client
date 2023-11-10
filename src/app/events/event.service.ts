@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, catchError, map, of } from 'rxjs';
 import { Event } from '../models/event';
 import { environment } from '../environments/environment';
 
@@ -37,5 +37,30 @@ export class EventService {
   patchEvent(event: Event): Observable<Object>{
     console.log("patching Event" + event);
     return this.http.put(`${this.EVENT_URL}/${event.eventid}`, event);
+  }
+
+  geocodeLocation(location: string): Observable<google.maps.LatLngLiteral | null> {
+    const params = new HttpParams()
+      .set('address', location)
+      .set('key', 'AIzaSyDZRzLThdKT21jtrUqryu5kQe5Qd6Bejmw');
+  
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json', { params }).pipe(
+      map((response: any) => {
+        console.log("results for the location " + location+ " are : ");
+        console.log(response)
+        const results = response.results;
+        if (results.length > 0) {
+          const { lat, lng } = results[0].geometry.location;
+          return { lat, lng };
+        } else {
+          console.log('No results found for the location:', location);
+          return null;
+        }
+      }),
+      catchError((error: any) => {
+        console.error('Error geocoding the location:', error);
+        return of(null);
+      })
+    );
   }
 }
