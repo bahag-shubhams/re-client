@@ -6,6 +6,6 @@ export class Event {
         public dat: string,
         public eventid: number,
         public liked : number,
-        public imageUrl: string
+        public image_url: string
     ) {}
 }
