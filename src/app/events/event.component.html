@@ -1,84 +1,355 @@
 <ng-template #content let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Update Event</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
-    </div>
-    <div class="modal-body">
-        <form #eventUpdateForm="ngForm" (ngSubmit)="onSubmit(eventUpdateForm)" novalidate>
-            <div class="mb-3 form-group">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" name="title" id="title" [(ngModel)]="event.title" ngModel />
-            </div>
-            <div class="mb-3 form-group">
-                <label for="description" class="form-label">Description</label>
-                <textarea type="text" class="form-control" name="event_description" id="event_description"
-                    [(ngModel)]="event.event_description" ngModel></textarea>
-            </div>
-            <div class="mb-3 form-group">
-                <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" name="loc" id="loc" [(ngModel)]="event.loc" ngModel />
-            </div>
-            <div class="mb-3 form-group">
-                <label for="date" class="form-label">Date</label>
-                <input type="date" class="form-control" name="dat" id="dat" [(ngModel)]="event.dat" ngModel />
-            </div>
-            <div class="text-center">
-                <button class="btn btn-outline-dark" type="submit">
-                    Submit
-                </button>
-            </div>
-        </form>
-    </div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update Event</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="closeModal()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form
+      #eventUpdateForm="ngForm"
+      (ngSubmit)="onSubmit(eventUpdateForm)"
+      novalidate
+    >
+      <div class="mb-3 form-group">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          name="title"
+          id="title"
+          [(ngModel)]="event.title"
+          ngModel
+        />
+      </div>
+      <div class="mb-3 form-group">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          type="text"
+          class="form-control"
+          name="event_description"
+          id="event_description"
+          [(ngModel)]="event.event_description"
+          ngModel
+        ></textarea>
+      </div>
+      <div class="mb-3 form-group">
+        <label for="location" class="form-label">Location</label>
+        <input
+          type="text"
+          class="form-control"
+          name="loc"
+          id="loc"
+          [(ngModel)]="event.loc"
+          ngModel
+        />
+      </div>
+      <div class="mb-3 form-group">
+        <label for="date" class="form-label">Date</label>
+        <input
+          type="date"
+          class="form-control"
+          name="dat"
+          id="dat"
+          [(ngModel)]="event.dat"
+          ngModel
+        />
+      </div>
+      <div class="text-center">
+        <button class="btn btn-outline-dark" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
 </ng-template>
+<!--  -->
+<!--  -->
+<!--  -->
 
-<!-- <div class="container">
-    <h1>Events Details</h1>
-    <div class="row">
-        <div class="col-lg-8 col-sm-offset-1">
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>location</th>
-                        <th>Date</th>
-                        <th>Likes</th>
-                        <th>Image</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td> {{event.title}}</td>
-                        <td>{{event.event_description}}</td>
-                        <td>{{event.loc}}</td>
-                        <td>{{event.dat | date}}</td>
-                        <td><img src={{event.imageUrl}} alt="event1"></td>
-                    </tr>
-
-                    <tr>
-                        <td colspan="6"><button class="btn btn-primary"
-                                (click)="openUpdateModal(content)">Update</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-    </div> -->
-<div class="container">
-    <div class="event-container row">
-        <div class="col-md-6 event-image-container">
-            <img class="event-image" src="./assets/example-poster.jpg" alt="Event Image">
-        </div>
-        <div class="event-details col-md-6">
-            <h1>{{event.title}}</h1>
-            <p><strong>Description:</strong> {{event.event_description}}</p>
-            <p><strong>Location:</strong> {{event.loc}}</p>
-            <p><strong>Date:</strong> {{event.dat}}</p>
-            <p><strong>Likes:</strong> {{event.liked}}</p>
-            <div class="text-center">
-                <button class="btn btn-primary mx-2">Attend</button>
-                <button class="btn btn-primary" (click)="openUpdateModal(content)">Update</button>
-            </div>
-        </div>
+<!--  -->
+<div class="grid-display">
+  <section>
+    <div>
+      <h1 class="textphotos">
+        <small>Welcome to </small>
+        <h1>{{ event.title }}</h1>
+        <small> {{ event.dat | date }} </small>
+      </h1>
     </div>
+
+    <!-- You can add more ".slideshow-image" elements, but remember to update the "$items" variable on SCSS -->
+    <div class="slideshow">
+      <div
+        class="slideshow-image"
+        style="
+          background-image: url('https://source.unsplash.com/category/nature/1600x1400');
+        "
+      ></div>
+      <div
+        class="slideshow-image"
+        style="
+          background-image: url('https://source.unsplash.com/category/buildings/1600x1400');
+        "
+      ></div>
+      <div
+        class="slideshow-image"
+        style="
+          background-image: url('https://source.unsplash.com/category/food/1600x1400');
+        "
+      ></div>
+      <div
+        class="slideshow-image"
+        style="
+          background-image: url('https://source.unsplash.com/category/technology/1600x1400');
+        "
+      ></div>
+    </div>
+  </section>
+
+  <section class="site-section">
+    <div class="container py-2">
+      <!-- <h1>Your tech conference, IT job fair and festival in Darmstadt</h1> -->
+      <article class="postcard light blue">
+        <a class="postcard__img_link">
+          <img
+            class="postcard__img"
+            src="https://b2755441.smushcdn.com/2755441/wp-content/uploads/2022/09/A7301125-1024x683.jpg?lossy=1&strip=1&webp=1"
+            alt="Image Title"
+          />
+        </a>
+        <div class="postcard__text t-dark">
+          <h1 class="postcard__title blue">Tech Konferenz</h1>
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt">
+            Tech conferences, also known as technology conferences or tech
+            events, are gatherings that bring together professionals, experts,
+            enthusiasts, and industry leaders to discuss and explore the latest
+            advancements, trends, and innovations in the field of technology.
+            These conferences provide a platform for networking,
+            knowledge-sharing, and collaboration within the tech community.
+          </div>
+        </div>
+      </article>
+      <article class="postcard light red">
+        <a class="postcard__img_link">
+          <img
+            class="postcard__img"
+            src="https://b2755441.smushcdn.com/2755441/wp-content/uploads/2022/09/JobmesseDAIcon.jpg?lossy=1&strip=1&webp=1"
+            alt="Image Title"
+          />
+        </a>
+        <div class="postcard__text t-dark">
+          <h1 class="postcard__title red">IT-Jobmesse</h1>
+
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt">
+            An IT job fair, also known as an IT job fair or IT job expo, is an
+            event that brings together employers, recruiters, and job seekers
+            within the information technology (IT) industry. These job fairs
+            serve as a platform for connecting IT professionals with potential
+            employers, providing an opportunity for networking, recruitment, and
+            career development.
+          </div>
+        </div>
+      </article>
+      <article class="postcard light green">
+        <a class="postcard__img_link">
+          <img
+            class="postcard__img"
+            src="https://b2755441.smushcdn.com/2755441/wp-content/uploads/2022/09/FestivalDAIcon.jpg?lossy=1&strip=1&webp=1"
+            alt="Image Title"
+          />
+        </a>
+        <div class="postcard__text t-dark">
+          <h1 class="postcard__title green">Festival</h1>
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt">
+            Absolutely, taking a break and enjoying a festival can be a
+            rejuvenating experience. Festivals offer a chance to unwind, immerse
+            oneself in cultural or entertaining activities, and connect with
+            others in a joyous atmosphere. Everyone needs a break sometimes.
+            Whether it's a round of table football, table tennis or a hot match
+            in the gaming area. Rumors of an after-party are also making the
+            rounds in the chillout areas.
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+  <!-- FILEPATH: /Users/jasharid/re-client/src/app/events/event.component.html -->
+
+  <!-- <div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-icon">
+          <div class="icon-container">
+            <i class="fa fa-compass"></i>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Who?</h3>
+          <span
+            >Are you interested in IT? Then this <br />
+            is the right place for you!</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-icon">
+          <div class="icon-container">
+            <i class="fa fa-globe" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>When?</h3>
+          <span>Thursday April 27, 2023<br />from 10:00 a.m</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-icon">
+          <div class="icon-container">
+            <i class="fa fa-compass"></i>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>What?</h3>
+          <span
+            >You can find all information about the exhibitors, the program and
+            our specials below 😀</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-icon">
+          <div class="icon-container">
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="card-body">
+          <h2>#nodresscode</h2>
+          <span>
+            According to “come as you are”, you will look in vain for a suit and
+            tie at the ITCS!</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-icon">
+          <div class="icon-container">
+            <i class="fa fa-location-arrow"></i>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Afterparty!</h3>
+          <span
+            >The main afterparty starts at 4 p.m. with a DJ, drinks and
+            snacks.</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-icon">
+          <div class="icon-container">
+            <i class="fa fa-gift" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Gift</h3>
+          <span>
+            Unbeknownst to participants,we held a surprise—each one to receive a
+            cherished gift from the event's embrace.</span
+          >
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Site footer -->
+  <footer class="footer">
+    <div class="footer__addr"></div>
+
+    <ul class="footer__nav">
+      <li class="nav__item">
+        <h1 class="footer__logo">RunTime Error</h1>
+
+        <h2>Contact</h2>
+
+        <address>
+          Gutenbergstraße 21, 68167 Mannheim<br />
+
+          <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
+        </address>
+      </li>
+      <li class="nav__item">
+        <h2 class="nav__title">Media</h2>
+
+        <ul class="nav__ul">
+          <li>
+            <a href="#">Online</a>
+          </li>
+
+          <li>
+            <a href="#">Print</a>
+          </li>
+
+          <li>
+            <a href="#">Alternative Ads</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav__item nav__item--extra">
+        <h2 class="nav__title">Technology</h2>
+
+        <ul class="nav__ul">
+          <li>
+            <a href="#">Hardware Design</a>
+          </li>
+
+          <li>
+            <a href="#">Software Design</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav__item">
+        <h2 class="nav__title">Legal</h2>
+
+        <ul class="nav__ul">
+          <li>
+            <a href="#">Privacy Policy</a>
+          </li>
+
+          <li>
+            <a href="#">Terms of Use</a>
+          </li>
+
+          <li>
+            <a href="#">Sitemap</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- <div class="legal">
+      <p>&copy; 2019 Something. All rights reserved.</p>
+    </div> -->
+  </footer>
 </div>
