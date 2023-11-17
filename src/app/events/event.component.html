@@ -79,6 +79,14 @@
                 <button class="btn btn-primary mx-2">Attend</button>
                 <button class="btn btn-primary" (click)="openUpdateModal(content)">Update</button>
             </div>
+            <div class="container-fluid random">
+                <google-map height="300px" width="500px" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)" (mapMousemove)="move($event)"  [options]="mapOptions">
+                    <map-marker #marker="mapMarker" 
+                        [position]="markerPositions"
+                        [options]="markerOptions">
+                    </map-marker>
+                </google-map>
+            </div>
         </div>
     </div>
 </div>

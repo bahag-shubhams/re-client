@@ -42,7 +42,7 @@ export class EventService {
   geocodeLocation(location: string): Observable<google.maps.LatLngLiteral | null> {
     const params = new HttpParams()
       .set('address', location)
-      .set('key', 'AIzaSyDZRzLThdKT21jtrUqryu5kQe5Qd6Bejmw');
+      .set('key', 'AIzaSyCgeaS3soVELWYpgUFZvFinMq8d4LU8cM4');
   
     return this.http.get('https://maps.googleapis.com/maps/api/geocode/json', { params }).pipe(
       map((response: any) => {

@@ -22,6 +22,6 @@ export class AddFormComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-  this.event = new Event('','','','',-1,0,'',);
+  this.event = new Event('','','','',-1,0,'',{lat:0,lng:0});
   }
 }

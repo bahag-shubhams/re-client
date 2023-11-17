@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { EventService } from './event.service';
 import { Event } from '../models/event';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-map-view',
@@ -9,11 +10,11 @@ import { Event } from '../models/event';
   styleUrls: ['./map-view.component.css']
 })
 export class MapViewComponent implements OnInit{
-  constructor(private eventService: EventService){
+  constructor(private eventService: EventService, private router: Router){
 
   }
 
-  @ViewChild(MapInfoWindow) infoWindow: MapInfoWindow | undefined ;
+  @ViewChildren(MapInfoWindow) infoWindowsView: QueryList<MapInfoWindow> | undefined;
 
   display: any;
   center: google.maps.LatLngLiteral = {lat:10, lng:10};
@@ -31,9 +32,11 @@ export class MapViewComponent implements OnInit{
     this.events.forEach(event => {
       this.eventService.geocodeLocation(event.loc).subscribe((location)=> {
         if(location){
+          console.log("location in getevents for event " + event.title);
           this.markerPositions.push(location);
           console.log("marker Position in getevents");
           this.center = this.markerPositions[0];
+          event['position'] = location;
       }})
     });
     });
@@ -44,10 +47,28 @@ export class MapViewComponent implements OnInit{
     this.getEvents();
   }
 
-  openInfoWindow(marker: MapMarker){
-    if(this.infoWindow != undefined){
-      this.infoWindow.open(marker);
+  openInfoWindow(marker: MapMarker, windowIndex: number) {
+    /// stores the current index in forEach
+    /// close the other infoWindows first
+    
+
+    let curIdx = 0;
+    if (this.infoWindowsView == undefined) {
+      return;
     }
+    this.infoWindowsView.forEach((window: MapInfoWindow) => {
+      if (windowIndex === curIdx) {
+        window.open(marker);
+        curIdx++;
+      } else {
+        window.close();
+        curIdx++;
+      }
+    });
+  }
+
+  showDetails(event: Event) {
+    this.router.navigate(['/event/' + event.eventid]);
   }
 
   moveMap(event: google.maps.MapMouseEvent){
