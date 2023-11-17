@@ -109,7 +109,7 @@
 <div class="container">
     <div class="event-container row">
         <div class="col-md-6 event-image-container">
-            <img class="event-image" src="{{ event.image_url }}" alt="Event Image">
+            <img class="event-image" src="{{ event.image_url ? event.image_url : './assets/no-image.jpeg' }}" alt="Event Image">
         </div>
         <div class="event-details col-md-6">
             <h1>{{event.title}}</h1>
