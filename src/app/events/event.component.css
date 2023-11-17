@@ -1,29 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 @import "~@fortawesome/fontawesome-free/css/all.css";
-/* This pen */
-body {
-  font-family: "Baloo 2", cursive;
-  font-size: 16px;
-  color: #fff;
-  text-rendering: optimizeLegibility;
-  font-weight: initial;
-}
 
-/* .light {
-  background: #f3f5f7;
-} */
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
 a,
 a:hover {
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
-#pageHeaderTitle {
-  margin: 2rem 0;
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 2.5rem;
-}
-/* Cards */
+
+/* EVENT CARDS */
 .postcard {
   flex-wrap: wrap;
   display: flex;
@@ -34,18 +19,14 @@ a:hover {
   position: relative;
   color: #fff;
 }
-.postcard.dark {
-  background-color: #18151f;
-}
+
 .postcard.light {
   background-color: #e1e5ea;
 }
 .postcard .t-dark {
   color: #18151f;
 }
-.postcard a {
-  color: inherit;
-}
+
 .postcard h1,
 .postcard .h1 {
   margin-bottom: 0.5rem;
@@ -262,7 +243,9 @@ a:hover {
   background: #bdbb49;
   color: black;
 }
-.yellow .postcard__title:hover {
+
+/* IF U WANT TO ADD ANOTHER COLOR TO THE CARDS , THIS IS HOW IT LOOKS EX*/
+/* .yellow .postcard__title:hover {
   color: #bdbb49;
 }
 .yellow .postcard__bar {
@@ -281,7 +264,8 @@ a:hover {
     rgba(189, 187, 73, 0.1),
     transparent 50%
   );
-}
+} */
+
 @media screen and (min-width: 769px) {
   .green::before {
     background-image: linear-gradient(
@@ -325,7 +309,9 @@ a:hover {
       transparent 50%
     );
   }
-  .yellow::before {
+
+  /* IF U WANT TO ADD ANOTHER COLOR TO THE CARDS , THIS IS HOW IT LOOKS EX*/
+  /* .yellow::before {
     background-image: linear-gradient(
       -80deg,
       rgba(189, 187, 73, 0.1),
@@ -338,19 +324,23 @@ a:hover {
       rgba(189, 187, 73, 0.1),
       transparent 50%
     );
-  }
+  } */
 }
-
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/*  */
 .site-section {
   border-bottom: #18151f 1px solid;
 }
 
+/* GRID */
 .grid-display {
   display: grid;
   grid-template-rows: 2fr 4fr 1fr;
   gap: 0px 0px;
 }
 
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* FOOTER */
 .footer {
   display: flex;
   flex-flow: row wrap;
@@ -477,82 +467,8 @@ a:hover {
     flex: 2 0px;
   }
 }
-/* .card {
-  margin-top: 65px;
-  margin-bottom: 15px;
-  padding: 0;
-  position: relative;
-  border-color: #ccc;
-  -webkit-transition: all 0.4s ease;
-  -moz-transition: all 0.4s ease;
-  -ms-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-}
-.card .card-icon {
-  height: 25px;
-  margin-bottom: 15px;
-  position: relative;
-}
-.card .card-icon .icon-container {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 25px;
-  margin: auto;
-  height: 60px;
-  width: 60px;
-  background: #104fff;
-  color: #fff;
-  transform: rotate(45deg);
-  border-radius: 4px;
-  -webkit-transition: all 0.4s ease;
-  -moz-transition: all 0.4s ease;
-  -ms-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-  -webkit-box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.33);
-  -moz-box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.33);
-  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.33);
-}
-.card .card-icon .icon-container i.fa {
-  transform: rotate(-45deg);
-  display: block;
-  font-size: 30px;
-  height: 30px;
-  width: 30px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0px;
-  margin: auto;
-}
-.card .card-body {
-  padding: 20px 15px;
-  text-align: center;
-}
-.card .card-body span {
-  display: block;
-}
-.card .card-body button.btn {
-  display: block;
-  margin: 15px auto -40px auto;
-  text-transform: uppercase;
-  background: #2962ff;
-  color: #fff;
-  border-color: #4375ff;
-}
-.card:hover {
-  border-color: #2962ff;
-}
-.card:hover .card-icon .icon-container {
-  background: #4375ff;
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.55);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.55);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.55);
-} */
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* SLIDE SHOW ANIMATION */
 .slideshow {
   position: absolute;
   width: 100vw;
