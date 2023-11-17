@@ -9,7 +9,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Event</h5>
+        <img class="photo mb-2" src="./assets/add-event.png">
+        <h5 class="modal-title" id="exampleModalLabel">Schedule a New Event</h5>
         <button
           type="button"
           class="btn-close"
@@ -20,7 +21,11 @@
       <div class="modal-body">
         <form #addEventForm="ngForm" name="addEventForm" (ngSubmit)="submit()">
           <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
+           <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+
+           <label for="title" class="form-label"> <i class="fas fa-tag" style="color: rgb(111, 180, 252);"></i> Title </label>
             <input type="text" class="form-control" minlength="5" required name="title" #title="ngModel" [(ngModel)] = "event.title" id="title" />
             <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
               <div *ngIf="title.errors?.['required']">
@@ -33,8 +38,8 @@
           </div>
           
           <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" required name="description" #description="ngModel" [(ngModel)] = "event.event_description" rows="3" required minlength="10" maxlength="500" ></textarea>
+            <label for="event_description" class="form-label"> <i class="fas fa-file-alt" style="color: rgb(111, 180, 252);"></i> Description</label>
+            <textarea class="form-control" id="event_description" required name="description" #description="ngModel" [(ngModel)] = "event.event_description" rows="3" required minlength="10" maxlength="500" ></textarea>
             <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
               <div *ngIf="description.errors?.['required']">
                 Description is required.
@@ -48,7 +53,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="location" class="form-label">Location</label>
+            <label for="location" class="form-label"> <i class="fas fa-map-marker-alt" style="color: rgb(111, 180, 252);"></i> Location</label>
             <input type="text" class="form-control" required name="location" #location="ngModel" [(ngModel)] = "event.loc" id="location" required minlength="3" maxlength="50" pattern="^[A-Za-z0-9\s\-]+$"/>
             <div *ngIf="location.invalid && (location.dirty || location.touched)" class="alert alert-danger">
               <div *ngIf="location.errors?.['required']">
@@ -70,7 +75,7 @@
             <input type="text" class="form-control" name="id" #id="ngModel" ([ngModel]) = "event.id" id="id" />
           </div> -->
           <div class="mb-3">
-            <label for="date" class="form-label">Date</label>
+            <label for="date" class="form-label"> <i class="fas fa-calendar-alt" style="color: rgb(111, 180, 252);"></i> Date</label>
             <input type="date" class="form-control" required name="date" #date="ngModel" [(ngModel)] = "event.dat" id="date" />
             <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
               <div *ngIf="date.errors?.['required']">
