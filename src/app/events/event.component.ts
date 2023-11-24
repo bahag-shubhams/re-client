@@ -5,6 +5,7 @@ import { EventService } from './event.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-event',
@@ -13,6 +14,9 @@ import { DatePipe } from '@angular/common';
 })
 export class EventComponent implements OnInit {
   event!: Event;
+  comments: { author: string, text: string }[] = [];
+  newCommentText: string = '';
+  faPen = faPen;
   display: any;
   center: google.maps.LatLngLiteral = {lat:10, lng:10};
   zoom = 10;
@@ -70,6 +74,14 @@ export class EventComponent implements OnInit {
       return value.replace(/\n/g, '<br>');
     }
     return value;
+  }
+
+  submitComment() {
+    if (this.newCommentText.trim() !== '') {
+      const newComment = { author: 'John Doe', text: this.newCommentText };
+      this.comments.push(newComment);
+      this.newCommentText = '';
+    }
   }
 
   closeModal(){
