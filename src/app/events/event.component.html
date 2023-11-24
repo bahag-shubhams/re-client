@@ -1,229 +1,150 @@
 <ng-template #content let-modal>
-    <div class="modal-header">
-        <img class="photo mb-2" src="./assets/update-event.png">
-        <h4 class="modal-title" id="modal-basic-title">Update Event</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
-    </div>
-    <div class="modal-body">
-        <form #eventUpdateForm="ngForm" (ngSubmit)="onSubmit(eventUpdateForm)" novalidate>
-            <div class="mb-3">
-                <link
-                 rel="stylesheet"
-                 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-     
-                <label for="title" class="form-label"> <i class="fas fa-tag" style="color: rgb(111, 180, 252);"></i> Title </label>
-                 <input type="text" class="form-control" minlength="5" required name="title" #title="ngModel" [(ngModel)] = "event.title" id="title" />
-                 <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
-                   <div *ngIf="title.errors?.['required']">
-                     Title is required.
-                   </div>
-                   <div *ngIf="title.errors?.['minlength']">
-                     Title must be at least 5 characters long.
-                   </div>
-                 </div>
-               </div>
-               <div class="mb-3">
-                <label for="event_description" class="form-label"> <i class="fas fa-file-alt" style="color: rgb(111, 180, 252);"></i> Description</label>
-                <textarea class="form-control" id="event_description" required name="description" #description="ngModel" [(ngModel)] = "event.event_description" rows="3" required minlength="10" maxlength="500" ></textarea>
-                <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
-                  <div *ngIf="description.errors?.['required']">
-                    Description is required.
-                  </div>
-                  <div *ngIf="description.errors?.['minlength']">
-                    Description must be at least 10 characters long.
-                  </div>
-                  <div *ngIf="description.errors?.['maxlength']">
-                    Description cannot exceed 500 characters.
-                  </div>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="location" class="form-label"> <i class="fas fa-map-marker-alt" style="color: rgb(111, 180, 252);"></i> Location</label>
-                <input type="text" class="form-control" required name="location" #location="ngModel" [(ngModel)] = "event.loc" id="location" required minlength="3" maxlength="50" pattern="^[A-Za-z0-9\s\-]+$"/>
-                <div *ngIf="location.invalid && (location.dirty || location.touched)" class="alert alert-danger">
-                  <div *ngIf="location.errors?.['required']">
-                    Location is required.
-                  </div>
-                  <div *ngIf="location.errors?.['minlength']">
-                    Location must be at least 3 characters long.
-                  </div>
-                  <div *ngIf="location.errors?.['maxlength']">
-                    Location cannot exceed 50 characters.
-                  </div>
-                  <div *ngIf="location.errors?.['pattern']">
-                    Location can only contain letters, numbers, spaces, and hyphens.
-                  </div>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="date" class="form-label"> <i class="fas fa-calendar-alt" style="color: rgb(111, 180, 252);"></i> Date</label>
-                <input type="date" class="form-control" required name="date" #date="ngModel" [(ngModel)] = "event.dat" id="date" />
-                <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
-                  <div *ngIf="date.errors?.['required']">
-                    Date is required.
-                  </div>
-                </div>
-              </div>
-            <div class="text-center">
-                <button class="btn btn-primary" [disabled]="!eventUpdateForm.form.valid" type="submit">
-                    Submit
-                </button>
-            </div>
-        </form>
-    </div>
+  <div class="modal-header">
+    <img class="photo mb-2" src="./assets/update-event.png" />
+    <h4 class="modal-title" id="modal-basic-title">Update Event</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="closeModal()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form
+      #eventUpdateForm="ngForm"
+      (ngSubmit)="onSubmit(eventUpdateForm)"
+      novalidate
+    >
+      <div class="mb-3">
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
 
-    <!-- You can add more ".slideshow-image" elements, but remember to update the "$items" variable on CSS -->
-    <div class="slideshow">
-      <div
-        class="slideshow-image"
-        style="
-          background-image: url('https://source.unsplash.com/category/nature/1600x1400');
-        "
-      ></div>
-      <div
-        class="slideshow-image"
-        style="
-          background-image: url('https://source.unsplash.com/category/buildings/1600x1400');
-        "
-      ></div>
-      <div
-        class="slideshow-image"
-        style="
-          background-image: url('https://source.unsplash.com/category/food/1600x1400');
-        "
-      ></div>
-      <div
-        class="slideshow-image"
-        style="
-          background-image: url('https://source.unsplash.com/category/technology/1600x1400');
-        "
-      ></div>
-    </div>
-  </section>
-
-  <!-- EVENT CARDS -->
-  <section class="site-section">
-    <div class="container py-2">
-      <article class="postcard light blue">
-        <a class="postcard__img_link">
-          <img
-            class="postcard__img"
-            src="https://b2755441.smushcdn.com/2755441/wp-content/uploads/2022/09/A7301125-1024x683.jpg?lossy=1&strip=1&webp=1"
-            alt="Image Title"
-          />
-        </a>
-        <div class="postcard__text t-dark">
-          <h1 class="postcard__title blue">Tech Konferenz</h1>
-          <div class="postcard__bar"></div>
-          <div class="postcard__preview-txt">
-            Tech conferences, also known as technology conferences or tech
-            events, are gatherings that bring together professionals, experts,
-            enthusiasts, and industry leaders to discuss and explore the latest
-            advancements, trends, and innovations in the field of technology.
-            These conferences provide a platform for networking,
-            knowledge-sharing, and collaboration within the tech community.
+        <label for="title" class="form-label">
+          <i class="fas fa-tag" style="color: rgb(111, 180, 252)"></i> Title
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          minlength="5"
+          required
+          name="title"
+          #title="ngModel"
+          [(ngModel)]="event.title"
+          id="title"
+        />
+        <div
+          *ngIf="title.invalid && (title.dirty || title.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="title.errors?.['required']">Title is required.</div>
+          <div *ngIf="title.errors?.['minlength']">
+            Title must be at least 5 characters long.
           </div>
         </div>
-
-    </div> -->
-<div class="container">
-    <div class="event-container row">
-        <div class="col-md-6 event-image-container">
-            <img class="event-image" src="{{ event.image_url ? event.image_url : './assets/no-image.jpeg' }}" alt="Event Image">
-        </div>
-      </article>
-      <article class="postcard light green">
-        <a class="postcard__img_link">
-          <img
-            class="postcard__img"
-            src="https://b2755441.smushcdn.com/2755441/wp-content/uploads/2022/09/FestivalDAIcon.jpg?lossy=1&strip=1&webp=1"
-            alt="Image Title"
-          />
-        </a>
-        <div class="postcard__text t-dark">
-          <h1 class="postcard__title green">Festival</h1>
-          <div class="postcard__bar"></div>
-          <div class="postcard__preview-txt">
-            Absolutely, taking a break and enjoying a festival can be a
-            rejuvenating experience. Festivals offer a chance to unwind, immerse
-            oneself in cultural or entertaining activities, and connect with
-            others in a joyous atmosphere. Everyone needs a break sometimes.
-            Whether it's a round of table football, table tennis or a hot match
-            in the gaming area. Rumors of an after-party are also making the
-            rounds in the chillout areas.
+      </div>
+      <div class="mb-3">
+        <label for="event_description" class="form-label">
+          <i class="fas fa-file-alt" style="color: rgb(111, 180, 252)"></i>
+          Description</label
+        >
+        <textarea
+          class="form-control"
+          id="event_description"
+          required
+          name="description"
+          #description="ngModel"
+          [(ngModel)]="event.event_description"
+          rows="3"
+          required
+          minlength="10"
+          maxlength="500"
+        ></textarea>
+        <div
+          *ngIf="
+            description.invalid && (description.dirty || description.touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="description.errors?.['required']">
+            Description is required.
+          </div>
+          <div *ngIf="description.errors?.['minlength']">
+            Description must be at least 10 characters long.
+          </div>
+          <div *ngIf="description.errors?.['maxlength']">
+            Description cannot exceed 500 characters.
           </div>
         </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Site footer -->
-  <footer class="footer">
-    <div class="footer__addr"></div>
-
-    <ul class="footer__nav">
-      <li class="nav__item">
-        <h1 class="footer__logo">RunTime Error</h1>
-
-        <h2>Contact</h2>
-
-        <address>
-          Gutenbergstraße 21, 68167 Mannheim<br />
-
-          <a class="footer__btn" href="mailto:runtimeerror@gmail.com"
-            >Email Us</a
-          >
-        </address>
-      </li>
-      <li class="nav__item">
-        <h2 class="nav__title">Media</h2>
-
-        <ul class="nav__ul">
-          <li>
-            <a href="#">Online</a>
-          </li>
-
-          <li>
-            <a href="#">Print</a>
-          </li>
-
-          <li>
-            <a href="#">Alternative Ads</a>
-          </li>
-        </ul>
-      </li>
-
-      <li class="nav__item nav__item--extra">
-        <h2 class="nav__title">Technology</h2>
-
-        <ul class="nav__ul">
-          <li>
-            <a href="#">Hardware Design</a>
-          </li>
-
-          <li>
-            <a href="#">Software Design</a>
-          </li>
-        </ul>
-      </li>
-
-      <li class="nav__item">
-        <h2 class="nav__title">Legal</h2>
-
-        <ul class="nav__ul">
-          <li>
-            <a href="#">Privacy Policy</a>
-          </li>
-
-          <li>
-            <a href="#">Terms of Use</a>
-          </li>
-
-          <li>
-            <a href="#">Sitemap</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </footer>
-</div>
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">
+          <i
+            class="fas fa-map-marker-alt"
+            style="color: rgb(111, 180, 252)"
+          ></i>
+          Location</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          required
+          name="location"
+          #location="ngModel"
+          [(ngModel)]="event.loc"
+          id="location"
+          required
+          minlength="3"
+          maxlength="50"
+          pattern="^[A-Za-z0-9\s\-]+$"
+        />
+        <div
+          *ngIf="location.invalid && (location.dirty || location.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="location.errors?.['required']">Location is required.</div>
+          <div *ngIf="location.errors?.['minlength']">
+            Location must be at least 3 characters long.
+          </div>
+          <div *ngIf="location.errors?.['maxlength']">
+            Location cannot exceed 50 characters.
+          </div>
+          <div *ngIf="location.errors?.['pattern']">
+            Location can only contain letters, numbers, spaces, and hyphens.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="date" class="form-label">
+          <i class="fas fa-calendar-alt" style="color: rgb(111, 180, 252)"></i>
+          Date</label
+        >
+        <input
+          type="date"
+          class="form-control"
+          required
+          name="date"
+          #date="ngModel"
+          [(ngModel)]="event.dat"
+          id="date"
+        />
+        <div
+          *ngIf="date.invalid && (date.dirty || date.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="date.errors?.['required']">Date is required.</div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button
+          class="btn btn-primary"
+          [disabled]="!eventUpdateForm.form.valid"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
