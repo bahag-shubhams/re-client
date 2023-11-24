@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {faCalendar} from '@fortawesome/free-regular-svg-icons';
 import { faSort } from '@fortawesome/free-solid-svg-icons';
+import { faSortUp } from '@fortawesome/free-solid-svg-icons';
+import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-events-list',
@@ -21,6 +23,10 @@ export class EventsListComponent implements OnInit {
   faTrash = faTrash;
   faCalendar = faCalendar;
   faSort = faSort;
+  faSortUp= faSortUp;
+  faSortDown= faSortDown;
+  sortIcons = [faSort, faSortUp, faSortDown];
+  currentSortIconIndex: number = 0;
   isAscendingOrder: boolean = true;
 
   constructor(private eventService: EventService, private router: Router) {}
@@ -59,7 +65,13 @@ export class EventsListComponent implements OnInit {
   }
 
   sortEventsByDate(): void {
-    this.isAscendingOrder = !this.isAscendingOrder;
+    if (this.currentSortIconIndex === 0) {
+      this.isAscendingOrder = true;
+    } else {
+      this.isAscendingOrder = !this.isAscendingOrder;
+    }
+  
+    this.currentSortIconIndex = (this.currentSortIconIndex + 1) % this.sortIcons.length;
   }
 
 
