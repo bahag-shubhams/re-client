@@ -39,7 +39,7 @@
           
           <div class="mb-3">
             <label for="event_description" class="form-label"> <i class="fas fa-file-alt" style="color: rgb(111, 180, 252);"></i> Description</label>
-            <textarea class="form-control" id="event_description" required name="description" #description="ngModel" [(ngModel)] = "event.event_description" rows="3" required minlength="10" maxlength="500" ></textarea>
+            <textarea class="form-control" id="event_description" required name="description" #description="ngModel" [(ngModel)] = "event.event_description" rows="3" required minlength="10" maxlength="2000" ></textarea>
             <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
               <div *ngIf="description.errors?.['required']">
                 Description is required.
@@ -48,7 +48,7 @@
                 Description must be at least 10 characters long.
               </div>
               <div *ngIf="description.errors?.['maxlength']">
-                Description cannot exceed 500 characters.
+                Description cannot exceed 2000 characters.
               </div>
             </div>
           </div>
