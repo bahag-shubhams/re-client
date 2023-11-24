@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EventService } from './event.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-event',
@@ -53,6 +54,22 @@ export class EventComponent implements OnInit {
       this.ngOnInit();
     })
     this.updateModalService.dismissAll();
+  }
+
+  transformDate(value: any): any {
+    const datePipe = new DatePipe('en-US');
+
+    const time = datePipe.transform(value, 'HH:mm');
+    const formattedDate = datePipe.transform(value, 'dd MMMM yyyy');
+
+    return `${formattedDate}`;
+  }
+
+  transformDescription(value: string): string {
+    if (value) {
+      return value.replace(/\n/g, '<br>');
+    }
+    return value;
   }
 
   closeModal(){
