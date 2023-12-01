@@ -6,6 +6,7 @@ import { EventComponent } from './events/event.component';
 import { EventAddComponent } from './events/event-add.component';
 import { EventUpdateComponent } from './events/event-update.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MapViewComponent } from './events/map-view.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'map-view',
+    component: MapViewComponent
   },
   {
     path: 'event/:id',

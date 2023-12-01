@@ -73,3 +73,8 @@
     margin-bottom: 10px; /* Adjust margin for spacing */
     font-size: 1rem;
   }
+
+.map-container {
+    margin-top: 20px;
+    border-radius: 4%;
+}
