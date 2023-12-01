@@ -1,0 +1,26 @@
+<h2>Dive into 
+    Eventbuddy</h2>
+<div class="container">
+    
+    <form [formGroup]="registerForm" (ngSubmit)="registerWithEmailAndPassword()">
+      <label for="username">Username:</label>
+      <input type="text" id="username" formControlName="username" required>
+  
+      <label for="email">Email:</label>
+      <input type="text" id="email" formControlName="email" required>
+  
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="text" id="phoneNumber" formControlName="phoneNumber" required>
+  
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" required>
+  
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" required>
+  
+      <p class="alternative"> Already have an account? <span (click)="navigateToLogin()"> Signin</span></p>
+  
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+  </div>
+  

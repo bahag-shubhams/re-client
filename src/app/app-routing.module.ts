@@ -6,6 +6,9 @@ import { EventComponent } from './events/event.component';
 import { EventAddComponent } from './events/event-add.component';
 import { EventUpdateComponent } from './events/event-update.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './users/login/login.component';
+import { RegisterComponent } from './users/register/register.component';
+import { HomeComponent } from './users/home/home.component';
 
 const routes: Routes = [
   {
@@ -35,6 +38,18 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: '**',
