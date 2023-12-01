@@ -21,7 +21,7 @@ body {
   position: relative;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: #EE2026;
   color: white;
   position: sticky;
   top: 0;
@@ -31,6 +31,7 @@ body {
 .brand-title {
   font-size: 1.5rem;
   margin: 0.5rem;
+  margin-left: 1rem;
 }
 
 .navbar-links {
@@ -55,7 +56,7 @@ body {
 }
 
 .navbar-links li:hover {
-  background-color: #555;
+  background-color: #D72420;
 }
 
 .toggle-button {

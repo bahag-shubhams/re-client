@@ -1,10 +1,10 @@
 <div class="grid-display">
   <!-- SLIDE SHOW ANIMATION  -->
-  <section>
+  <section class="header">
     <div>
       <h1 class="textphotos">
         <small>Welcome to </small>
-        <h1>BAUHAUS EVENTS</h1>
+        <h1>BAUHAUS INSIDER</h1>
         <small>DECEMBER 2023 </small>
       </h1>
     </div>
@@ -23,23 +23,9 @@
           background-image: url('https://source.unsplash.com/category/buildings/1600x1400');
         "
       ></div>
-      <div
-        class="slideshow-image"
-        style="
-          background-image: url('https://source.unsplash.com/category/food/1600x1400');
-        "
-      ></div>
-      <div
-        class="slideshow-image"
-        style="
-          background-image: url('https://source.unsplash.com/category/technology/1600x1400');
-        "
-      ></div>
     </div>
   </section>
-
-  <!-- SEARCH FUNCTIONALITY -->
-  <div class="row mb-4 spacemargin">
+  <div class="row mb-3 spacemargin">
     <div class="col-md-11">
       <input
         type="text"
@@ -55,6 +41,14 @@
           [icon]="sortIcons[currentSortIconIndex]"
         ></fa-icon>
       </button>
+      <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button class="btn btn-primary mx-2">
+          <fa-icon
+            class="add-icon"
+            [icon]="faPlusSquare"
+          ></fa-icon>
+        </button>
+      </a>
     </div>
   </div>
 
@@ -114,14 +108,14 @@
 
     <ul class="footer__nav">
       <li class="nav__item">
-        <h1 class="footer__logo">RunTime Error</h1>
+        <h1 class="footer__logo"></h1>
 
         <h2>Contact</h2>
 
         <address>
           Gutenbergstraße 21, 68167 Mannheim<br />
 
-          <a class="footer__btn" href="mailto:runtimeerror@gmail.com"
+          <a class="footer__btn" href="mailto:bauhausinsider@gmail.com"
             >Email Us</a
           >
         </address>
