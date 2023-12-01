@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
       console.log(userData);
 
       this.authService.registerWithEmailAndPassword(userData).then((res: any) => {
-        this.router.navigateByUrl('home');
+        this.router.navigateByUrl('login');
       }).catch((error: any) => {
         console.error(error);
       });

@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       console.log(userData);
 
       this.authService.signWithEmailAndPassword(userData).then((res: any) => {
-        this.router.navigateByUrl('home');
+        this.router.navigateByUrl('events');
       }).catch((error: any) => {
         console.error(error);
       });
@@ -38,4 +38,12 @@ export class LoginComponent implements OnInit {
   navigateToRegister() {
     this.router.navigate(['/register']);
   }
+  logout() {
+    // Call your authentication service to perform logout
+    this.authService.logout();
+
+    // Navigate to the login page
+    this.router.navigate(['login']);
+  }
 }
+

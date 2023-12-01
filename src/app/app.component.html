@@ -16,10 +16,9 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active mr-3" routerLink="/about">About</a>
       <a class="nav-item nav-link" routerLink="/profile">Profile</a>
-      <a class="nav-item nav-link" routerLink="/login">Login</a>
-      
-      
       <a class="nav-item nav-link" routerLink="/map-view">Map View</a>
+      <button class="btn" (click)="logout()">Logout</button>
+      
     </div>
   </div>
 
@@ -48,6 +47,7 @@
       <li><a routerLink="/profile">Profile</a></li>
       <li><a class="nav-item nav-link" routerLink="/login">Login</a></li>
       <li><a class="nav-item nav-link" routerLink="/map-view">Map View</a></li>
+      <li><button class="btn" (click)="logout()">Logout</button></li>
     </ul>
   </div>
 </nav>

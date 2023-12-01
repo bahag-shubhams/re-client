@@ -14,7 +14,7 @@ import { MapViewComponent } from './events/map-view.component';
 const routes: Routes = [
   {
     path: '',
-    component: EventsListComponent
+    component: LoginComponent
   },
   {
     path: 'events',
