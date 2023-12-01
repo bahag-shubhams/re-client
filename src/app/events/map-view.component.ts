@@ -30,14 +30,11 @@ export class MapViewComponent implements OnInit{
   getEvents(){
     this.eventService.getEvents().subscribe((events) => {this.events = events;
     this.events.forEach(event => {
-      this.eventService.geocodeLocation(event.loc).subscribe((location)=> {
-        if(location){
-          console.log("location in getevents for event " + event.title);
-          this.markerPositions.push(location);
-          console.log("marker Position in getevents");
-          this.center = this.markerPositions[0];
-          event['position'] = location;
-      }})
+      if(event.position){
+        this.markerPositions.push(event.position);
+        console.log("marker Position in getevents");
+        this.center = this.markerPositions[0];
+      }
     });
     });
   }

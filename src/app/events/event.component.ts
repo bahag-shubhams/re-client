@@ -31,13 +31,11 @@ export class EventComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.eventService.getEvent(id).subscribe((event) => {this.event = event;
-        this.eventService.geocodeLocation(event.loc).subscribe((location)=> {
-          if(location){
-            this.markerPositions = location;
-            console.log("marker Position in getevents");
-            this.center = this.markerPositions;
-        }})
+      this.eventService.getEvent(id).subscribe((event) => {
+        this.event = event;
+        this.markerPositions = event.position;
+        console.log("marker Position in getevents");
+        this.center = this.markerPositions;
       });
     }
   }

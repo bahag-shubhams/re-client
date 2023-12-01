@@ -39,28 +39,28 @@ export class EventService {
     return this.http.put(`${this.EVENT_URL}/${event.eventid}`, event);
   }
 
-  geocodeLocation(location: string): Observable<google.maps.LatLngLiteral | null> {
-    const params = new HttpParams()
-      .set('address', location)
-      .set('key', 'AIzaSyCgeaS3soVELWYpgUFZvFinMq8d4LU8cM4');
+  // geocodeLocation(location: string): Observable<google.maps.LatLngLiteral | null> {
+  //   const params = new HttpParams()
+  //     .set('address', location)
+  //     .set('key', '');
   
-    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json', { params }).pipe(
-      map((response: any) => {
-        console.log("results for the location " + location+ " are : ");
-        console.log(response)
-        const results = response.results;
-        if (results.length > 0) {
-          const { lat, lng } = results[0].geometry.location;
-          return { lat, lng };
-        } else {
-          console.log('No results found for the location:', location);
-          return null;
-        }
-      }),
-      catchError((error: any) => {
-        console.error('Error geocoding the location:', error);
-        return of(null);
-      })
-    );
-  }
+  //   return this.http.get('https://maps.googleapis.com/maps/api/geocode/json', { params }).pipe(
+  //     map((response: any) => {
+  //       console.log("results for the location " + location+ " are : ");
+  //       console.log(response)
+  //       const results = response.results;
+  //       if (results.length > 0) {
+  //         const { lat, lng } = results[0].geometry.location;
+  //         return { lat, lng };
+  //       } else {
+  //         console.log('No results found for the location:', location);
+  //         return null;
+  //       }
+  //     }),
+  //     catchError((error: any) => {
+  //       console.error('Error geocoding the location:', error);
+  //       return of(null);
+  //     })
+  //   );
+  // }
 }
