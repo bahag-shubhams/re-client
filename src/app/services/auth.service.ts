@@ -6,6 +6,10 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   providedIn: 'root'
 })
 export class AuthService {
+  logout() {
+  
+    console.log('User logged out.');
+  }
 
   constructor(private afs: AngularFireAuth) { }
   
@@ -15,4 +19,5 @@ export class AuthService {
   signWithEmailAndPassword(user: {email: string, password: string} ){ 
     return this.afs.signInWithEmailAndPassword(user.email,user.password);
    }
+ 
 }
