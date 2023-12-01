@@ -1,0 +1,22 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<div class="container">
+  <div>
+
+    <h2>Sign In</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="loginWithEmailAndPassword()">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" required>
+    </form>
+
+    <p class="forgot-label"> Forgot Password? </p>
+    <p class="alternative"> Don't have an account? <span (click)="navigateToRegister()"> Signup</span></p>
+    <button type="button" (click)="loginWithEmailAndPassword()" class="btn btn-primary"> Login</button>
+  </div>
+</div>
