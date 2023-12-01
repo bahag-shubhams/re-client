@@ -1,19 +1,78 @@
-<div class="container mx-4 my-4">
-  <div class="row mb-4">
+<div class="grid-display">
+  <!-- SLIDE SHOW ANIMATION  -->
+  <section>
+    <div>
+      <h1 class="textphotos">
+        <small>Welcome to </small>
+        <h1>BAUHAUS EVENTS</h1>
+        <small>DECEMBER 2023 </small>
+      </h1>
+    </div>
+
+    <!-- You can add more ".slideshow-image" elements, but remember to update the "$items" variable on CSS -->
+    <div class="slideshow">
+      <div
+        class="slideshow-image"
+        style="
+          background-image: url('https://source.unsplash.com/category/nature/1600x1400');
+        "
+      ></div>
+      <div
+        class="slideshow-image"
+        style="
+          background-image: url('https://source.unsplash.com/category/buildings/1600x1400');
+        "
+      ></div>
+      <div
+        class="slideshow-image"
+        style="
+          background-image: url('https://source.unsplash.com/category/food/1600x1400');
+        "
+      ></div>
+      <div
+        class="slideshow-image"
+        style="
+          background-image: url('https://source.unsplash.com/category/technology/1600x1400');
+        "
+      ></div>
+    </div>
+  </section>
+
+  <!-- SEARCH FUNCTIONALITY -->
+  <div class="row mb-4 spacemargin">
     <div class="col-md-11">
-      <input type="text" class="form-control" placeholder="Search by event name" [(ngModel)]="searchTerm">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by event name"
+        [(ngModel)]="searchTerm"
+      />
     </div>
     <div class="col-md-1 text-right">
       <button class="btn btn-primary" (click)="sortEventsByDate()">
-        <fa-icon class="sort-icon" [icon]="sortIcons[currentSortIconIndex]"></fa-icon>
+        <fa-icon
+          class="sort-icon"
+          [icon]="sortIcons[currentSortIconIndex]"
+        ></fa-icon>
       </button>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-3" *ngFor="let event of filteredAndSortedEvents(); let i = index">
+
+  <!-- CARDS -->
+  <div class="row spacemargin">
+    <div
+      class="col-md-3 col-sm-6"
+      *ngFor="let event of filteredAndSortedEvents(); let i = index"
+    >
       <div class="card mb-4">
-        <img class="card-img-top text-center" src="{{ event.image_url ? event.image_url : './assets/no-image.jpeg' }}" alt="{{ event.title }}">
-        <div class="card-body d-flex flex-column" style="flex-grow: 1;">
+        <img
+          class="card-img-top text-center"
+          src="{{
+            event.image_url ? event.image_url : './assets/no-image.jpeg'
+          }}"
+          alt="{{ event.title }}"
+        />
+        <div class="card-body d-flex flex-column" style="flex-grow: 1">
           <h5 class="card-title">{{ event.title }}</h5>
           <div class="text-truncate-container mb-2">
             <p class="card-text description">{{ event.event_description }}</p>
@@ -26,12 +85,15 @@
               <fa-icon class="calendar-icon" [icon]="faCalendar"></fa-icon>
             </div>
             <div>
-              <p class="card-text date-time">{{event.dat  | date }}</p>
+              <p class="card-text date-time">{{ event.dat | date }}</p>
             </div>
           </div>
           <div class="row justify-content-center align-items-center">
             <div class="col-md-9">
-              <button class="btn btn-primary details-button" (click)="showDetails(event)">
+              <button
+                class="btn btn-primary details-button"
+                (click)="showDetails(event)"
+              >
                 More Details
               </button>
             </div>
@@ -45,6 +107,74 @@
       </div>
     </div>
   </div>
-</div>
-<!-- (click)="toggleSelected(event)" -->
 
+  <!-- Site footer -->
+  <footer class="footer">
+    <div class="footer__addr"></div>
+
+    <ul class="footer__nav">
+      <li class="nav__item">
+        <h1 class="footer__logo">RunTime Error</h1>
+
+        <h2>Contact</h2>
+
+        <address>
+          Gutenbergstraße 21, 68167 Mannheim<br />
+
+          <a class="footer__btn" href="mailto:runtimeerror@gmail.com"
+            >Email Us</a
+          >
+        </address>
+      </li>
+      <li class="nav__item">
+        <h2 class="nav__title">Media</h2>
+
+        <ul class="nav__ul">
+          <li>
+            <a href="#">Online</a>
+          </li>
+
+          <li>
+            <a href="#">Print</a>
+          </li>
+
+          <li>
+            <a href="#">Alternative Ads</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav__item nav__item--extra">
+        <h2 class="nav__title">Technology</h2>
+
+        <ul class="nav__ul">
+          <li>
+            <a href="#">Hardware Design</a>
+          </li>
+
+          <li>
+            <a href="#">Software Design</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav__item">
+        <h2 class="nav__title">Legal</h2>
+
+        <ul class="nav__ul">
+          <li>
+            <a href="#">Privacy Policy</a>
+          </li>
+
+          <li>
+            <a href="#">Terms of Use</a>
+          </li>
+
+          <li>
+            <a href="#">Sitemap</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </footer>
+</div>

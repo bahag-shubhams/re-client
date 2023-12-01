@@ -1,5 +1,5 @@
-<!-- FILEPATH: /Users/jasharid/re-client/src/app/app.component.html -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+<!-- SARPER WAY -->
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
   <a class="navbar-brand mx-4" href="#">Event Listings</a>
   <button
     class="navbar-toggler"
@@ -20,7 +20,6 @@
       
       
       <a class="nav-item nav-link" routerLink="/map-view">Map View</a>
-      <!-- <a class="nav-item nav-link" routerLink="/">Demo Button</a> -->
     </div>
   </div>
 
@@ -32,6 +31,31 @@
   >
     Add event
   </button>
+</nav> -->
+
+<!-- DRILONS WAY -->
+<nav class="navbar">
+  <div class="brand-title">RunTime Error</div>
+  <a href="#" class="toggle-button">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </a>
+  <div class="navbar-links">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a routerLink="/about">About</a></li>
+      <li><a routerLink="/profile">Profile</a></li>
+      <li><a class="nav-item nav-link" routerLink="/login">Login</a></li>
+      <li><a class="nav-item nav-link" routerLink="/map-view">Map View</a></li>
+
+      <li>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          >Add Event</a
+        >
+      </li>
+    </ul>
+  </div>
 </nav>
 
 <app-add-form></app-add-form>

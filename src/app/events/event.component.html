@@ -1,35 +1,73 @@
 <ng-template #content let-modal>
   <div class="modal-header">
-    <img class="photo mb-2" src="./assets/update-event.png">
+    <img class="photo mb-2" src="./assets/update-event.png" />
     <h4 class="modal-title" id="modal-basic-title">Update Event</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="closeModal()"
+    ></button>
   </div>
   <div class="modal-body">
-    <form #eventUpdateForm="ngForm" (ngSubmit)="onSubmit(eventUpdateForm)" novalidate>
+    <form
+      #eventUpdateForm="ngForm"
+      (ngSubmit)="onSubmit(eventUpdateForm)"
+      novalidate
+    >
       <div class="mb-3">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
 
-        <label for="title" class="form-label"> <i class="fas fa-tag" style="color: rgb(111, 180, 252);"></i> Title
+        <label for="title" class="form-label">
+          <i class="fas fa-tag" style="color: rgb(111, 180, 252)"></i> Title
         </label>
-        <input type="text" class="form-control" minlength="5" required name="title" #title="ngModel"
-          [(ngModel)]="event.title" id="title" />
-        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
-          <div *ngIf="title.errors?.['required']">
-            Title is required.
-          </div>
+        <input
+          type="text"
+          class="form-control"
+          minlength="5"
+          required
+          name="title"
+          #title="ngModel"
+          [(ngModel)]="event.title"
+          id="title"
+        />
+        <div
+          *ngIf="title.invalid && (title.dirty || title.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="title.errors?.['required']">Title is required.</div>
           <div *ngIf="title.errors?.['minlength']">
             Title must be at least 5 characters long.
           </div>
         </div>
       </div>
       <div class="mb-3">
-        <label for="event_description" class="form-label"> <i class="fas fa-file-alt"
-            style="color: rgb(111, 180, 252);"></i> Description</label>
-        <textarea class="form-control" id="event_description" required name="event_description"
-          #event_description="ngModel" [(ngModel)]="event.event_description" rows="3" required minlength="10"
-          maxlength="2000"></textarea>
-        <div *ngIf="event_description.invalid && (event_description.dirty || event_description.touched)"
-          class="alert alert-danger">
+        <label for="event_description" class="form-label">
+          <i class="fas fa-file-alt" style="color: rgb(111, 180, 252)"></i>
+          Description</label
+        >
+        <textarea
+          class="form-control"
+          id="event_description"
+          required
+          name="event_description"
+          #event_description="ngModel"
+          [(ngModel)]="event.event_description"
+          rows="3"
+          required
+          minlength="10"
+          maxlength="2000"
+        ></textarea>
+        <div
+          *ngIf="
+            event_description.invalid &&
+            (event_description.dirty || event_description.touched)
+          "
+          class="alert alert-danger"
+        >
           <div *ngIf="event_description.errors?.['required']">
             Description is required.
           </div>
@@ -42,14 +80,31 @@
         </div>
       </div>
       <div class="mb-3">
-        <label for="loc" class="form-label"> <i class="fas fa-map-marker-alt" style="color: rgb(111, 180, 252);"></i>
-          Location</label>
-        <input type="text" class="form-control" required name="loc" #loc="ngModel" [(ngModel)]="event.loc" id="loc"
-          required minlength="3" maxlength="50" pattern="^[A-Za-z0-9\s\-]+$" />
-        <div *ngIf="loc.invalid && (loc.dirty || loc.touched)" class="alert alert-danger">
-          <div *ngIf="loc.errors?.['required']">
-            Location is required.
-          </div>
+        <label for="loc" class="form-label">
+          <i
+            class="fas fa-map-marker-alt"
+            style="color: rgb(111, 180, 252)"
+          ></i>
+          Location</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          required
+          name="loc"
+          #loc="ngModel"
+          [(ngModel)]="event.loc"
+          id="loc"
+          required
+          minlength="3"
+          maxlength="50"
+          pattern="^[A-Za-z0-9\s\-]+$"
+        />
+        <div
+          *ngIf="loc.invalid && (loc.dirty || loc.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="loc.errors?.['required']">Location is required.</div>
           <div *ngIf="loc.errors?.['minlength']">
             Location must be at least 3 characters long.
           </div>
@@ -62,17 +117,32 @@
         </div>
       </div>
       <div class="mb-3">
-        <label for="dat" class="form-label"> <i class="fas fa-calendar-alt" style="color: rgb(111, 180, 252);"></i>
-          Date</label>
-        <input type="date" class="form-control" required name="dat" #dat="ngModel" [(ngModel)]="event.dat" id="dat" />
-        <div *ngIf="dat.invalid && (dat.dirty || dat.touched)" class="alert alert-danger">
-          <div *ngIf="dat.errors?.['required']">
-            Date is required.
-          </div>
+        <label for="dat" class="form-label">
+          <i class="fas fa-calendar-alt" style="color: rgb(111, 180, 252)"></i>
+          Date</label
+        >
+        <input
+          type="date"
+          class="form-control"
+          required
+          name="dat"
+          #dat="ngModel"
+          [(ngModel)]="event.dat"
+          id="dat"
+        />
+        <div
+          *ngIf="dat.invalid && (dat.dirty || dat.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="dat.errors?.['required']">Date is required.</div>
         </div>
       </div>
       <div class="text-center">
-        <button class="btn btn-primary" [disabled]="!eventUpdateForm.form.valid" type="submit">
+        <button
+          class="btn btn-primary"
+          [disabled]="!eventUpdateForm.form.valid"
+          type="submit"
+        >
           Submit
         </button>
       </div>
@@ -82,30 +152,50 @@
 <div class="container">
   <div class="event-container row align-items-start">
     <div class="col-md-4 event-image-container">
-      <img class="event-image" src="{{ event.image_url ? event.image_url : './assets/no-image.jpeg' }}"
-        alt="Event Image">
+      <img
+        class="event-image"
+        src="{{ event.image_url ? event.image_url : './assets/no-image.jpeg' }}"
+        alt="Event Image"
+      />
     </div>
     <div class="event-details col-md-8">
       <div class="d-flex justify-content-between align-items-start">
         <div>
-          <h1>{{event.title}}</h1>
-          <p><strong>Description:<br> </strong> <span [innerHTML]=transformDescription(event.event_description)></span>
+          <h1>{{ event.title }}</h1>
+          <p>
+            <strong>Description:<br /> </strong>
+            <span
+              [innerHTML]="transformDescription(event.event_description)"
+            ></span>
           </p>
-          <p><strong>Date:</strong> {{transformDate(event.dat)}}</p>
-          <p><strong>Location:</strong> {{event.loc}}</p>
+          <p><strong>Date:</strong> {{ transformDate(event.dat) }}</p>
+          <p><strong>Location:</strong> {{ event.loc }}</p>
           <div class="map-container">
             <div class="container-fluid random">
-              <google-map height="250px" width="450px" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)" (mapMousemove)="move($event)"  [options]="mapOptions">
-                  <map-marker #marker="mapMarker" 
-                      [position]="markerPositions"
-                      [options]="markerOptions">
-                  </map-marker>
+              <google-map
+                height="250px"
+                width="450px"
+                [center]="center"
+                [zoom]="zoom"
+                (mapClick)="moveMap($event)"
+                (mapMousemove)="move($event)"
+                [options]="mapOptions"
+              >
+                <map-marker
+                  #marker="mapMarker"
+                  [position]="markerPositions"
+                  [options]="markerOptions"
+                >
+                </map-marker>
               </google-map>
             </div>
           </div>
         </div>
         <div class="text-center">
-          <button class="btn btn-primary my-2" (click)="openUpdateModal(content)">
+          <button
+            class="btn btn-primary my-2"
+            (click)="openUpdateModal(content)"
+          >
             <fa-icon class="pen-icon" [icon]="faPen"></fa-icon>
           </button>
         </div>
@@ -127,10 +217,21 @@
       <form (ngSubmit)="submitComment()" #commentForm="ngForm">
         <div class="mb-3">
           <label for="comment" class="form-label">Add a Comment:</label>
-          <textarea class="form-control" id="comment" name="comment" required
-            [(ngModel)]="newCommentText"></textarea>
+          <textarea
+            class="form-control"
+            id="comment"
+            name="comment"
+            required
+            [(ngModel)]="newCommentText"
+          ></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="commentForm.invalid">Submit Comment</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="commentForm.invalid"
+        >
+          Submit Comment
+        </button>
       </form>
     </div>
   </div>
