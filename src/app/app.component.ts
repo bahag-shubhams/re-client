@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
   showNavbar = true;
   private subscription: Subscription = new Subscription();
 
-  constructor(private authService: AuthService, private router: Router, private routeStateService: RouteStateService) {}
+  constructor(private routeStateService: RouteStateService) {}
 
   ngOnInit() {
     this.subscription = this.routeStateService.isLoginRoute.subscribe(
