@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
   showNavbar = true;
   private subscription: Subscription = new Subscription();
 
-  constructor(private routeStateService: RouteStateService) {}
+  constructor(private authService: AuthService, private router: Router, private routeStateService: RouteStateService) {}
 
   ngOnInit() {
     this.subscription = this.routeStateService.isLoginRoute.subscribe(
@@ -28,7 +28,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   title = 're-client';
-  constructor(private authService: AuthService, private router: Router) {}
 
   logout() {
     this.authService.logout();
