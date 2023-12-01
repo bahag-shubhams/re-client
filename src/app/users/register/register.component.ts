@@ -1,18 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { RouteStateService } from 'src/app/services/route-state.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit {
-
+export class RegisterComponent implements OnInit, OnDestroy {
   registerForm: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router, private fb: FormBuilder) {
+  constructor(
+    private routeStateService: RouteStateService,
+    private authService: AuthService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.email]],
       email: ['', [Validators.required]],
@@ -21,19 +26,30 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['', [Validators.required]],
     });
   }
+  ngOnDestroy(): void {
+    this.routeStateService.isLoginRoute.next(false);
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.routeStateService.isLoginRoute.next(true);
+  }
 
   registerWithEmailAndPassword() {
     if (this.registerForm.valid) {
-      const userData = { ...this.registerForm.value, email: this.registerForm.value.username };
+      const userData = {
+        ...this.registerForm.value,
+        email: this.registerForm.value.username,
+      };
       console.log(userData);
 
-      this.authService.registerWithEmailAndPassword(userData).then((res: any) => {
-        this.router.navigateByUrl('login');
-      }).catch((error: any) => {
-        console.error(error);
-      });
+      this.authService
+        .registerWithEmailAndPassword(userData)
+        .then((res: any) => {
+          this.router.navigateByUrl('login');
+        })
+        .catch((error: any) => {
+          console.error(error);
+        });
     }
   }
 
