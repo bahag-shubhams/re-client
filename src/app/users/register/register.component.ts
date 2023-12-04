@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { RouteStateService } from 'src/app/services/route-state.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private routeStateService: RouteStateService,
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userService: UserService
   ) {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.email]],
@@ -42,9 +44,18 @@ export class RegisterComponent implements OnInit, OnDestroy {
       };
       console.log(userData);
 
+      const persistedData = {
+        full_name: this.registerForm.value.username,
+        email: this.registerForm.value.email,
+        phone_number: this.registerForm.value.phoneNumber,
+        userid: -1
+      }
+      console.log(persistedData);
+
       this.authService
         .registerWithEmailAndPassword(userData)
         .then((res: any) => {
+          this.userService.addUser(persistedData).subscribe();
           this.router.navigateByUrl('login');
         })
         .catch((error: any) => {

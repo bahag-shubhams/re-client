@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { RouteStateService } from 'src/app/services/route-state.service';
+import { UserService } from '../user.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +15,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   errorMessage: string = '';
   hide: boolean = true;
   loginForm: FormGroup;
+  loggedInUser!: User;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private fb: FormBuilder,
-    private routeStateService: RouteStateService
+    private routeStateService: RouteStateService,
+    private userService: UserService
   ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.email]],
@@ -44,6 +48,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.authService
         .signWithEmailAndPassword(userData)
         .then((res: any) => {
+          this.userService.getUserByEmail(userData.email).subscribe((user: User) => {
+            this.loggedInUser = user;
+            console.log(user);
+          });
+          console.log(this.loggedInUser);
           this.router.navigateByUrl('events');
         })
         .catch((error: any) => {
