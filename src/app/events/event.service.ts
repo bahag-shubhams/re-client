@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, catchError, map, of } from 'rxjs';
-import { Event } from '../models/event';
+import { Event, PaginatedEventResponse } from '../models/event';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -14,6 +14,10 @@ export class EventService {
   private URL = environment.url + '/events';
   private EVENT_URL =  environment.url + '/event';
 
+
+  getPaginatedEvents(pageNumber: number): Observable<PaginatedEventResponse>{
+    return this.http.get<PaginatedEventResponse>(`${this.URL}/${pageNumber}`);
+  }
 
   getEvents(): Observable<Event[]>{
     return this.http.get<Event[]>(`${this.URL}`);

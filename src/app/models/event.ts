@@ -10,3 +10,11 @@ export class Event {
         public position: google.maps.LatLngLiteral,
     ) {}
 }
+
+export class PaginatedEventResponse {
+    constructor(
+        public data: Event[],
+        public total_pages: number,
+        public current_page: number,
+    ) {}
+}
