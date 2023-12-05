@@ -34,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 're-client';
 
   logout() {
+    localStorage.removeItem('user');
     this.authService.logout();
     this.router.navigate(['/']);
   }
