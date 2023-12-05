@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       };
 
       const persistedData = {
-        full_name: this.registerForm.value.username,
+        full_name: this.registerForm.value.fullName,
         email: this.registerForm.value.email,
         phone_number: this.registerForm.value.phoneNumber,
         userid: -1
