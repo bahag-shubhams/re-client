@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.userService.getUserByEmail(userData.email).subscribe((user: User) => {
             this.loggedInUser = user;
             console.log(user);
+            localStorage.setItem('user', JSON.stringify(user));
           });
           console.log(this.loggedInUser);
           this.router.navigateByUrl('events');

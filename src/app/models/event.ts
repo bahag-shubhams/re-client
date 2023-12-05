@@ -18,3 +18,14 @@ export class PaginatedEventResponse {
         public current_page: number,
     ) {}
 }
+
+export class Comment {
+    constructor(
+        public author_name: string,
+        public comment: string,
+        public dat: string,
+        public authorid: number,
+        public eventid: number,
+        public commentid: number,
+    ) {}
+} 

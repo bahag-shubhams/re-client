@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, catchError, map, of } from 'rxjs';
-import { Event, PaginatedEventResponse } from '../models/event';
+import { Comment, Event, PaginatedEventResponse } from '../models/event';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -13,6 +13,7 @@ export class EventService {
 
   private URL = environment.url + '/events';
   private EVENT_URL =  environment.url + '/event';
+  private COMMENT_URL = environment.url + '/comment';
 
 
   getPaginatedEvents(pageNumber: number): Observable<PaginatedEventResponse>{
@@ -42,6 +43,16 @@ export class EventService {
     console.log("patching Event" + event);
     return this.http.put(`${this.EVENT_URL}/${event.eventid}`, event);
   }
+
+  getCommentsOfEvent(eventid: number): Observable<Comment[]>{
+    return this.http.get<Comment[]>(`${this.EVENT_URL}/${eventid}/comments`);
+  }
+
+  addComment(comment: Comment): Observable<Comment> {
+    console.log("Adding comment... " + comment)
+    return this.http.post<Comment>(
+    `${this.COMMENT_URL}`, comment);
+    }
 
   // geocodeLocation(location: string): Observable<google.maps.LatLngLiteral | null> {
   //   const params = new HttpParams()

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Event } from '../models/event';
+import { Comment, Event } from '../models/event';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from './event.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -14,7 +14,7 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 })
 export class EventComponent implements OnInit {
   event!: Event;
-  comments: { author: string, text: string }[] = [];
+  comments: Comment[] = [];
   newCommentText: string = '';
   faPen = faPen;
   display: any;
@@ -41,6 +41,12 @@ export class EventComponent implements OnInit {
         this.markerPositions = event.position;
         console.log("marker Position in getevents");
         this.center = this.markerPositions;
+      });
+      this.eventService.getCommentsOfEvent(Number(id)).subscribe((comments: Comment[]) => {
+        for(let i = 0; i < comments.length; i++){
+          this.comments.push(comments[i]);
+        }
+        console.log(this.comments)
       });
     }
   }
@@ -78,9 +84,14 @@ export class EventComponent implements OnInit {
 
   submitComment() {
     if (this.newCommentText.trim() !== '') {
-      const newComment = { author: 'John Doe', text: this.newCommentText };
-      this.comments.push(newComment);
+      // change the author name and author id below after login logic
+      const localUser = localStorage.getItem('user') ? localStorage.getItem('user') : null;
+      const author_name = localUser ? JSON.parse(localUser).full_name : "Test Author";
+      const authorid = localUser ? JSON.parse(localUser).userid : -1;
+      const newComment = new Comment(author_name, this.newCommentText, new Date().toISOString(), authorid, this.event.eventid, -1);
+      this.eventService.addComment(newComment).subscribe();
       this.newCommentText = '';
+      window.location.reload();
     }
   }
 
