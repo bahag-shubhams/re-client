@@ -30,19 +30,28 @@ export class EventsListComponent implements OnInit {
   currentSortIconIndex: number = 0;
   isAscendingOrder: boolean = true;
   faPlusSquare = faPlusSquare;
+  currentPage = 1;
+  totalPages = 1; 
+  pageNumbers: number[] = [];
+
 
   constructor(private eventService: EventService, private router: Router) {}
 
-  getEvents(): void {
-    this.eventService.getEvents().subscribe((events) => {this.events = events; console.log(events)});
+  getEvents(pageNumber: number): void {
+    this.eventService.getPaginatedEvents(pageNumber).subscribe((events) => {
+      this.events = events.data;
+      this.totalPages = events.total_pages;
+      this.currentPage = events.current_page;
+      this.generatePageNumbers();
+    });
   }
 
   addEvent(event: Event): void {
-    this.eventService.addEvent(event).subscribe(() => this.getEvents());
+    this.eventService.addEvent(event).subscribe(() => this.getEvents(this.currentPage));
   }
 
   deleteEvent(event: Event) {
-    this.eventService.deleteEvent(event.eventid).subscribe(() => this.getEvents());
+    this.eventService.deleteEvent(event.eventid).subscribe(() => this.getEvents(this.currentPage));
   }
 
   filteredAndSortedEvents(): Event[] {
@@ -51,6 +60,10 @@ export class EventsListComponent implements OnInit {
     );
 
     return this.sortEvents(filteredEvents);
+  }
+
+  generatePageNumbers() {
+    this.pageNumbers = Array(this.totalPages).fill(0).map((x, i) => i + 1);
   }
 
   sortEvents(events: Event[]): Event[] {
@@ -76,9 +89,14 @@ export class EventsListComponent implements OnInit {
     this.currentSortIconIndex = (this.currentSortIconIndex + 1) % this.sortIcons.length;
   }
 
+  goToPage(pageNumber: number) {
+    this.currentPage = pageNumber;
+    this.getEvents(this.currentPage);
+  }
+
 
   ngOnInit(): void {
-    this.getEvents();
+    this.getEvents(this.currentPage);
     console.log(this.events);
   }
 }

@@ -412,3 +412,20 @@ h1.textphotos small:last-child {
   border-top: 1px solid rgba(0, 0, 0, 0.25);
   padding-top: 0.5em;
 }
+
+/* For the pagination buttons */
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.page-button {
+  margin-right: 10px; /* Adjust the value as needed to control the spacing between the buttons */
+  margin-bottom: 10px;
+}
