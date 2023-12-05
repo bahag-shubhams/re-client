@@ -1,24 +1,53 @@
 <h2>Dive into Bauhaus Insider</h2>
 <div class="container">
+  <div class="left-image"></div>
+  <form [formGroup]="registerForm" (ngSubmit)="registerWithEmailAndPassword()">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" formControlName="fullName">
+    <div *ngIf="registerForm.get('fullName')?.hasError('required') && (registerForm.get('fullName')?.dirty || submitted)">
+      Full Name is required.
+    </div>
+    <div *ngIf="registerForm.get('fullName')?.hasError('minlength') && (registerForm.get('fullName')?.dirty || submitted)">
+      Full Name must be at least 4 characters long.
+    </div>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email">
+    <div *ngIf="registerForm.get('email')?.hasError('required') && (registerForm.get('email')?.dirty || submitted)">
+      Email is required.
+    </div>
+    <div *ngIf="registerForm.get('email')?.hasError('email') && (registerForm.get('email')?.dirty || submitted)">
+      Invalid email format.
+    </div>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="tel" id="phoneNumber" formControlName="phoneNumber">
+    <div *ngIf="registerForm.get('phoneNumber')?.hasError('required') && (registerForm.get('phoneNumber')?.dirty || submitted)">
+      Phone number is required.
+    </div>
+    <div *ngIf="registerForm.get('phoneNumber')?.hasError('pattern') && (registerForm.get('phoneNumber')?.dirty || submitted)">
+      Invalid phone number format. Use the format +1234567890.
+    </div>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" formControlName="password">
+    <div *ngIf="registerForm.get('password')?.hasError('required') && (registerForm.get('password')?.dirty || submitted)">
+      Password is required.
+    </div>
+    <div *ngIf="registerForm.get('password')?.hasError('minlength') && (registerForm.get('password')?.dirty || submitted)">
+      Password must be at least 6 characters long.
+    </div>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" formControlName="confirmPassword">
+    <div *ngIf="registerForm.get('confirmPassword')?.hasError('required') || registerForm.get('confirmPassword')?.hasError('mismatch')">
+      Confirm password is required and must match the password.
+    </div>
     
-    <form [formGroup]="registerForm" (ngSubmit)="registerWithEmailAndPassword()">
-      <label for="username">Username:</label>
-      <input type="text" id="username" formControlName="username" required>
-  
-      <label for="email">Email:</label>
-      <input type="text" id="email" formControlName="email" required>
-  
-      <label for="phoneNumber">Phone Number:</label>
-      <input type="text" id="phoneNumber" formControlName="phoneNumber" required>
-  
-      <label for="password">Password:</label>
-      <input type="password" id="password" formControlName="password" required>
-  
-      <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" id="confirmPassword" formControlName="confirmPassword" required>
-  
-      <p class="alternative"> Already have an account? <span (click)="navigateToLogin()"> Signin</span></p>
-  
-      <button type="submit" class="btn btn-primary">Register</button>
-    </form>
-  </div>
+
+    <p class="alternative"> Already have an account? <span (click)="navigateToLogin()"> Sign in</span></p>
+
+    <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Register</button>
+  </form>
+</div>
+

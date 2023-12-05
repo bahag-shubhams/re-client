@@ -8,10 +8,11 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   registerForm: FormGroup;
+  submitted = false;
 
   constructor(
     private routeStateService: RouteStateService,
@@ -21,13 +22,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private userService: UserService
   ) {
     this.registerForm = this.fb.group({
-      username: ['', [Validators.required, Validators.email]],
-      email: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      fullName: ['', [Validators.required, Validators.minLength(4)]],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^\+\d{10,15}$/)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]],
+    }, {
+      validator: this.passwordMatchValidator
     });
   }
+
   ngOnDestroy(): void {
     this.routeStateService.isLoginRoute.next(false);
   }
@@ -37,12 +41,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   registerWithEmailAndPassword() {
+    this.submitted = true;
+
     if (this.registerForm.valid) {
       const userData = {
         ...this.registerForm.value,
-        email: this.registerForm.value.username,
       };
-      console.log(userData);
 
       const persistedData = {
         full_name: this.registerForm.value.username,
@@ -67,4 +71,17 @@ export class RegisterComponent implements OnInit, OnDestroy {
   navigateToLogin() {
     this.router.navigate(['/login']);
   }
+
+  private passwordMatchValidator(formGroup: FormGroup) {
+    const password = formGroup.get('password')!.value;
+    const confirmPasswordControl = formGroup.get('confirmPassword');
+  
+    if (confirmPasswordControl && confirmPasswordControl.value !== password) {
+      confirmPasswordControl.setErrors({ mismatch: true });
+    } else {
+      confirmPasswordControl?.setErrors(null);
+    }
+  }
+  
+  
 }
