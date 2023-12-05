@@ -85,7 +85,7 @@ export class EventComponent implements OnInit {
   submitComment() {
     if (this.newCommentText.trim() !== '') {
       // change the author name and author id below after login logic
-      const localUser = localStorage.getItem('user') ? localStorage.getItem('user') : null;
+      const localUser = localStorage.getItem('user');
       const author_name = localUser ? JSON.parse(localUser).full_name : "Test Author";
       const authorid = localUser ? JSON.parse(localUser).userid : -1;
       const newComment = new Comment(author_name, this.newCommentText, new Date().toISOString(), authorid, this.event.eventid, -1);

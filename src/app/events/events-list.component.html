@@ -114,7 +114,7 @@
     </div>
     <div class="button-container">
       <div class="button-wrapper">
-        <button [class.btn-warning]="currentPage === pageNumber" class="btn btn-primary page-button" *ngFor="let pageNumber of pageNumbers" (click)="goToPage(pageNumber)">
+        <button [class.btn-primary]="currentPage === pageNumber" class="btn btn-primary page-button" *ngFor="let pageNumber of pageNumbers" (click)="goToPage(pageNumber)">
           {{ pageNumber }}
         </button>
       </div>

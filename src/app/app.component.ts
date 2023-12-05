@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class AppComponent implements OnInit, OnDestroy {
   showNavbar = true;
   private subscription: Subscription = new Subscription();
+  isLoggedIn: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -25,6 +26,10 @@ export class AppComponent implements OnInit, OnDestroy {
         this.showNavbar = !isLoginRoute;
       }
     );
+    if(localStorage.getItem('user'))
+      this.isLoggedIn = true; 
+    else 
+      this.isLoggedIn = false;
   }
 
   ngOnDestroy() {
