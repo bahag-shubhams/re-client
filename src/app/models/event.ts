@@ -5,7 +5,7 @@ export class Event {
         public loc: string,
         public dat: string,
         public eventid: number,
-        public liked : number,
+        public liked : boolean,
         public image_url: string,
         public position: google.maps.LatLngLiteral,
     ) {}

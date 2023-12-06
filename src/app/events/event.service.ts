@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, catchError, map, of } from 'rxjs';
 import { Event, PaginatedEventResponse } from '../models/event';
 import { environment } from '../environments/environment';
+import { UserFavoriteEvent } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class EventService {
 
   private URL = environment.url + '/events';
   private EVENT_URL =  environment.url + '/event';
+  private USER_URL =  environment.url + '/user';
 
 
   getPaginatedEvents(pageNumber: number): Observable<PaginatedEventResponse>{
@@ -32,15 +34,26 @@ export class EventService {
   }
 
   addEvent(event: Event): Observable<Event> {
-    console.log("event" + event);
-    console.log("event url" + this.EVENT_URL);
     return this.http.post<Event>(
     `${this.URL}`, event);
-    }
+  }
+
+  addfavoriteEvent(userFavoriteEvent: UserFavoriteEvent): Observable<UserFavoriteEvent> {
+    return this.http.post<UserFavoriteEvent>(
+    `${this.USER_URL}/favorite-events`, userFavoriteEvent);
+  }
 
   patchEvent(event: Event): Observable<Object>{
     console.log("patching Event" + event);
     return this.http.put(`${this.EVENT_URL}/${event.eventid}`, event);
+  }
+
+  getUserFavoriteEvents(user_id: number): Observable<UserFavoriteEvent[]>{
+    return this.http.get<UserFavoriteEvent[]>(`${this.USER_URL}/${user_id}/favorite-events`);
+  }
+
+  deleteUserFavoriteEvent(userFavoriteEvent: UserFavoriteEvent): Observable<UserFavoriteEvent>{
+    return this.http.delete<UserFavoriteEvent>(`${this.USER_URL}/favorite-events`, {body: userFavoriteEvent});
   }
 
   // geocodeLocation(location: string): Observable<google.maps.LatLngLiteral | null> {

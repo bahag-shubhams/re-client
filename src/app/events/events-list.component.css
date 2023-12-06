@@ -429,3 +429,8 @@ h1.textphotos small:last-child {
   margin-right: 10px; /* Adjust the value as needed to control the spacing between the buttons */
   margin-bottom: 10px;
 }
+
+.red-heart {
+  color: red;
+}
+
