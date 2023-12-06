@@ -38,8 +38,8 @@ export class EventsListComponent implements OnInit {
   totalPages = 1; 
   pageNumbers: number[] = [];
 
-  private localUser = localStorage.getItem('user') ? localStorage.getItem('user') : null;
-  private userid = this.localUser ? JSON.parse(this.localUser).userid : -1;
+  localUser: User  = {} as User;
+  userid : number = -1;
 
 
   constructor(private eventService: EventService, private router: Router) {
@@ -137,6 +137,8 @@ export class EventsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.localUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : {} as User;
+    this.userid = this.localUser.userid;
     this.getEvents(this.currentPage);
     // get favorite events of the signed in user
   }
