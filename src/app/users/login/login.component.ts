@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   errorMessage: string = '';
   hide: boolean = true;
   loginForm: FormGroup;
+  submitted = false;
 
   constructor(
     private authService: AuthService,
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   loginWithEmailAndPassword() {
+    this.submitted = true;
     if (this.loginForm.valid) {
       const userData = {
         ...this.loginForm.value,

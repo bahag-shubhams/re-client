@@ -1,56 +1,74 @@
-body {
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+
+body, html {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-  background-size: cover; 
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
+
+
 
 .container {
   display: flex;
-  justify-content: left;
-  align-items: flex-start; 
-  min-height: 100vh;
-  margin: 0;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('src/assets/bauhaus-img.jpeg'); /* Replace 'your-background-image.jpg' with the path to your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-.login-container {
-  width: 300px;
+
+/* Other styles for the form container and its content */
+.form-container {
+  position: relative;
+  max-width: 400px;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.7); /* Adjust the alpha channel for transparency */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 h2 {
-  text-align: left;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #696969;
 }
 
-.form-group {
-  margin-bottom: 15px;
+.form-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 label {
   display: block;
   margin-bottom: 5px;
+  color: #333;
+  height: 40px; /* Adjust the height as needed */
+  overflow-y: auto; 
 }
 
 input {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 3px;
+  transition: border 0.3s;
+  border-color: #ccc;
 }
 
-.forgot-password {
-  text-align: right;
-  margin-bottom: 10px;
-}
-
-.forgot-label a {
-  text-decoration: none;
-  color: #3498db;
+input:focus {
+  border-color: #ff6f6f;
 }
 
 .alternative {
@@ -59,19 +77,20 @@ input {
 }
 
 .alternative span {
-  color: #3498db;
+  color: #ee2026;
   cursor: pointer;
 }
 
 .btn-primary {
   width: 100%;
   padding: 10px;
-  background-color: #3498db;
+  background-color: #ee2026;
   color: #fff;
   border: none;
   border-radius: 3px;
-  cursor: pointer;
 }
 
-
-
+.error-message {
+  color: #ff6f6f;
+  margin-top: 5px;
+}

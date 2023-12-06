@@ -1,76 +1,97 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
 
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-  }
-  .container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-image: url('../../../assets/bauhaus.png');
-    background-size: 30% auto; /* Adjust the size of the background image */
-    background-position: right; /* Position the background image on the right side */
-    background-repeat: no-repeat;
-  }
-  
-  .register-container {
-    max-width: 400px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.8);
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  .form-content {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
+body, html {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
 
-  label {
-    display: block;
-    
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  .alternative {
-    text-align: center;
-    margin-top: 15px;
-  }
-  
-  .alternative span {
-    color: #3498db;
-    cursor: pointer;
-  }
-  
-  .btn-primary {
-    width: 100%;
-    padding: 10px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
+/* Rest of your styles... */
 
-  
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('src/assets/bauhaus-img.jpeg'); /* Replace 'your-background-image.jpg' with the path to your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Other styles for the form container and its content */
+.form-container {
+  position: relative;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.7); /* Adjust the alpha channel for transparency */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #696969;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  height: 40px; /* Adjust the height as needed */
+  overflow-y: auto; 
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  transition: border 0.3s;
+  border-color: #ccc;
+}
+
+input:focus {
+  border-color: #ff6f6f;
+}
+
+.alternative {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.alternative span {
+  color: #ee2026;
+  cursor: pointer;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  background-color: #ee2026;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+}
+
+.error-message {
+  color: #ff6f6f;
+  margin-top: 5px;
+}
