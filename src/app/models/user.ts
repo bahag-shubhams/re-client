@@ -6,3 +6,10 @@ export class User {
         public userid: number,
     ) {}
 }
+
+export class UserFavoriteEvent {
+    constructor(
+        public event_id: number,
+        public user_id: number,
+    ) {}
+}

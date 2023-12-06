@@ -95,7 +95,7 @@
             </div>
           </div>
           <div class="row justify-content-center align-items-center">
-            <div class="col-md-9">
+            <div class="col-md-7">
               <button
                 class="btn btn-primary details-button"
                 (click)="showDetails(event)"
@@ -103,9 +103,14 @@
                 More Details
               </button>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <button class="btn btn-danger" (click)="deleteEvent(event)">
                 <fa-icon [icon]="faTrash"></fa-icon>
+              </button>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-primary" [class.red-heart]="event.liked" (click)="toggleFavoriteEvent(event)">
+                <fa-icon [icon]="faHeart"></fa-icon>
               </button>
             </div>
           </div>

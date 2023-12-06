@@ -50,11 +50,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         .then((res: any) => {
           this.userService.getUserByEmail(userData.email).subscribe((user: User) => {
             this.loggedInUser = user;
-            console.log(user);
+            // sets the user in local storage
             localStorage.setItem('user', JSON.stringify(user));
+            console.log(user);
           });
-          console.log(this.loggedInUser);
-          this.router.navigateByUrl('events');
+          this.router.navigateByUrl('events/1');
         })
         .catch((error: any) => {
           console.error(error);

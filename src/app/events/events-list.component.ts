@@ -8,6 +8,9 @@ import { faSort } from '@fortawesome/free-solid-svg-icons';
 import { faSortUp } from '@fortawesome/free-solid-svg-icons';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { User, UserFavoriteEvent } from '../models/user';
+
 
 @Component({
   selector: 'app-events-list',
@@ -22,6 +25,7 @@ export class EventsListComponent implements OnInit {
   events!: Event[];
   searchTerm: string = ''
   faTrash = faTrash;
+  faHeart = faHeart;
   faCalendar = faCalendar;
   faSort = faSort;
   faSortUp= faSortUp;
@@ -34,15 +38,21 @@ export class EventsListComponent implements OnInit {
   totalPages = 1; 
   pageNumbers: number[] = [];
 
+  private localUser = localStorage.getItem('user') ? localStorage.getItem('user') : null;
+  private userid = this.localUser ? JSON.parse(this.localUser).userid : -1;
 
-  constructor(private eventService: EventService, private router: Router) {}
+
+  constructor(private eventService: EventService, private router: Router) {
+  }
 
   getEvents(pageNumber: number): void {
     this.eventService.getPaginatedEvents(pageNumber).subscribe((events) => {
       this.events = events.data;
+      console.log(this.events);
       this.totalPages = events.total_pages;
       this.currentPage = events.current_page;
       this.generatePageNumbers();
+      this.getUserFavoriteEvents();
     });
   }
 
@@ -64,6 +74,24 @@ export class EventsListComponent implements OnInit {
 
   generatePageNumbers() {
     this.pageNumbers = Array(this.totalPages).fill(0).map((x, i) => i + 1);
+  }
+
+  toggleFavoriteEvent(event: Event) {
+    //this.eventService.favoriteEvent(event.eventid).subscribe(() => this.getEvents(this.currentPage))
+    if(this.userid != -1) {
+      const newUserFavoriteEvent: UserFavoriteEvent = {
+        event_id: event.eventid,
+        user_id: this.userid,
+      };
+      if(!event.liked) {
+        console.log("adding favorite event" + newUserFavoriteEvent.event_id + " " + newUserFavoriteEvent.user_id);
+        this.eventService.addfavoriteEvent(newUserFavoriteEvent).subscribe(() => event.liked = true);
+      }
+      else {
+        console.log("deleting favorite event" + newUserFavoriteEvent.event_id + " " + newUserFavoriteEvent.user_id);
+        this.eventService.deleteUserFavoriteEvent(newUserFavoriteEvent).subscribe(() => event.liked = false);
+      }
+    }
   }
 
   sortEvents(events: Event[]): Event[] {
@@ -92,11 +120,24 @@ export class EventsListComponent implements OnInit {
   goToPage(pageNumber: number) {
     this.currentPage = pageNumber;
     this.getEvents(this.currentPage);
+    this.getUserFavoriteEvents();
   }
 
+  getUserFavoriteEvents(): void {
+    this.eventService.getUserFavoriteEvents(this.userid).subscribe((userFavoriteEvents) => {
+      userFavoriteEvents.forEach((userFavoriteEvent) => {
+        console.log("User Favorite Events id "+ userFavoriteEvent.event_id);
+        this.events.forEach((event) => {
+          if (event.eventid === userFavoriteEvent.event_id) {
+            event.liked = true;
+          }
+        });
+      });
+    });
+  }
 
   ngOnInit(): void {
     this.getEvents(this.currentPage);
-    console.log(this.events);
+    // get favorite events of the signed in user
   }
 }
