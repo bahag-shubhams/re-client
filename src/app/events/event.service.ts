@@ -70,8 +70,8 @@ export class EventService {
     return this.http.post(`${this.EVENT_URL}/${eventid}?userid=${userid}`, null);
   }
 
-  searchEvent(page_number: number, searchTerm: string): Observable<any[]>{
-    return this.http.get<Event[]>(`${this.URL}/${page_number}?search=${searchTerm}`);
+  searchEvent(page_number: number, searchTerm: string, sort: string = "ASC"): Observable<any[]>{
+    return this.http.get<Event[]>(`${this.URL}/${page_number}?search=${searchTerm}&sort=${sort}`);
   }
 
   // geocodeLocation(location: string): Observable<google.maps.LatLngLiteral | null> {

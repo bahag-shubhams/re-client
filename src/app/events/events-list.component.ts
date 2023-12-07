@@ -27,16 +27,16 @@ export class EventsListComponent implements OnInit {
   faTrash = faTrash;
   faHeart = faHeart;
   faCalendar = faCalendar;
-  faSort = faSort;
   faSortUp= faSortUp;
   faSortDown= faSortDown;
-  sortIcons = [faSort, faSortUp, faSortDown];
+  sortIcons = [faSortUp, faSortDown];
   currentSortIconIndex: number = 0;
   isAscendingOrder: boolean = true;
   faPlusSquare = faPlusSquare;
   currentPage = 1;
   totalPages = 1; 
   pageNumbers: number[] = [];
+  sort: string = 'ASC';
 
   localUser: User  = {} as User;
   userid : number = -1;
@@ -100,27 +100,20 @@ export class EventsListComponent implements OnInit {
     }
   }
 
-  sortEvents(events: Event[]): Event[] {
-    return events.sort((a, b) => {
-      const dateA = new Date(a.dat).getTime();
-      const dateB = new Date(b.dat).getTime();
-
-      if (this.isAscendingOrder) {
-        return dateA - dateB;
-      } else {
-        return dateB - dateA;
-      }
-    });
-  }
-
   sortEventsByDate(): void {
-    if (this.currentSortIconIndex === 0) {
-      this.isAscendingOrder = true;
-    } else {
-      this.isAscendingOrder = !this.isAscendingOrder;
-    }
-  
-    this.currentSortIconIndex = (this.currentSortIconIndex + 1) % this.sortIcons.length;
+    this.sort = this.sort === 'ASC' ? 'DESC' : 'ASC';
+    this.eventService.searchEvent(this.currentPage, this.searchTerm, this.sort).subscribe((data:any) => {
+      this.events = data.data;  
+      this.totalPages = data.total_pages;
+      this.generatePageNumbers();
+      if (this.currentSortIconIndex === 0) {
+        this.isAscendingOrder = true;
+      } else {
+        this.isAscendingOrder = !this.isAscendingOrder;
+      }
+    
+      this.currentSortIconIndex = (this.currentSortIconIndex + 1) % this.sortIcons.length;
+    });
   }
 
   goToPage(pageNumber: number) {
