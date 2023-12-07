@@ -48,7 +48,7 @@
 }
 
 .details-button {
-  background-color: #007bff;
+  background-color: #525252;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -434,3 +434,6 @@ h1.textphotos small:last-child {
   color: red;
 }
 
+.grey{
+  color: #525252; 
+}
