@@ -20,6 +20,7 @@ export class EventComponent implements OnInit {
   display: any;
   center: google.maps.LatLngLiteral = {lat:10, lng:10};
   zoom = 10;
+  attending: boolean = false;
 
   mapOptions: google.maps.MapOptions = {mapId: "ebaa6a7b1e765d5d"}
 
@@ -84,7 +85,6 @@ export class EventComponent implements OnInit {
 
   submitComment() {
     if (this.newCommentText.trim() !== '') {
-      // change the author name and author id below after login logic
       const localUser = localStorage.getItem('user');
       const author_name = localUser ? JSON.parse(localUser).full_name : "Test Author";
       const authorid = localUser ? JSON.parse(localUser).userid : -1;
@@ -93,6 +93,15 @@ export class EventComponent implements OnInit {
       this.newCommentText = '';
       window.location.reload();
     }
+  }
+
+  attendEvent() {
+    const localUser = localStorage.getItem('user');
+    const userid = localUser ? JSON.parse(localUser).userid : -1;
+    const eventid = this.event.eventid;
+    this.eventService.attendEvent(userid, eventid).subscribe(() => {
+      this.attending = true;
+    });  
   }
 
   closeModal(){

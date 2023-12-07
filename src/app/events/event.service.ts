@@ -66,6 +66,10 @@ export class EventService {
     return this.http.delete<UserFavoriteEvent>(`${this.USER_URL}/favorite-events`, {body: userFavoriteEvent});
   }
 
+  attendEvent(userid: number, eventid: number) {
+    return this.http.post(`${this.EVENT_URL}/${eventid}?userid=${userid}`, null);
+  }
+
   // geocodeLocation(location: string): Observable<google.maps.LatLngLiteral | null> {
   //   const params = new HttpParams()
   //     .set('address', location)

@@ -201,7 +201,9 @@
       </div>
       <div class="d-flex justify-content-end">
         <div class="attend-event-btn">
-          <button class="btn grey white-heart">Attend Event</button>
+          <button class="btn  grey white-heart" [ngClass]="{'btn-primary': !attending, 'btn-success': attending}" (click)="attendEvent()"> 
+            {{ attending ? 'Attending' : 'Attend Event' }}
+          </button>
         </div>
       </div>
     </div>
