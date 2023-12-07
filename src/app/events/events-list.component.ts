@@ -64,12 +64,18 @@ export class EventsListComponent implements OnInit {
     this.eventService.deleteEvent(event.eventid).subscribe(() => this.getEvents(this.currentPage));
   }
 
-  filteredAndSortedEvents(): Event[] {
-    let filteredEvents = this.events.filter((event) =>
-      event.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+  searchEvents(page_number: number = 1) {
+    this.eventService.searchEvent(page_number, this.searchTerm).subscribe(
+      (data: any) => {
+        console.log('API Response:', data);
+        this.events = data.data;  
+        this.totalPages = data.total_pages;
+        this.generatePageNumbers();
+      },
+      (error) => {
+        console.error('Error fetching events:', error);
+      }
     );
-
-    return this.sortEvents(filteredEvents);
   }
 
   generatePageNumbers() {
@@ -118,9 +124,15 @@ export class EventsListComponent implements OnInit {
   }
 
   goToPage(pageNumber: number) {
-    this.currentPage = pageNumber;
-    this.getEvents(this.currentPage);
-    this.getUserFavoriteEvents();
+    if(this.searchTerm != '') {
+      this.currentPage = pageNumber;
+      this.searchEvents(pageNumber);
+      this.getUserFavoriteEvents();
+    } else {
+      this.currentPage = pageNumber;
+      this.getEvents(this.currentPage);
+      this.getUserFavoriteEvents();
+    }
   }
 
   getUserFavoriteEvents(): void {

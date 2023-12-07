@@ -70,6 +70,10 @@ export class EventService {
     return this.http.post(`${this.EVENT_URL}/${eventid}?userid=${userid}`, null);
   }
 
+  searchEvent(page_number: number, searchTerm: string): Observable<any[]>{
+    return this.http.get<Event[]>(`${this.URL}/${page_number}?search=${searchTerm}`);
+  }
+
   // geocodeLocation(location: string): Observable<google.maps.LatLngLiteral | null> {
   //   const params = new HttpParams()
   //     .set('address', location)
