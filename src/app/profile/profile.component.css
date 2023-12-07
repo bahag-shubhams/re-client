@@ -60,3 +60,113 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
+.card {
+    max-width: 18rem; /* updated width */
+    max-height: 28.125rem; /* updated height */
+    height: 100%; /* Let the height adjust based on content */
+    width: 100%; /* Allow the card to expand to its container's width */
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00000033;
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  .card img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .card .details {
+    padding: 10px;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card .details h2 {
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .card .details p {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  
+  .details-button {
+    background-color: #525252;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+  
+  .card .card-title {
+    font-weight: bold; /* change the font weight of the card title */
+  }
+  
+  .card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* align the card body content to the start and end */
+  }
+  
+  .card .like-button {
+    margin-top: auto; /* move the button to the end of the card */
+  }
+  
+  .text-truncate-container {
+    width: 15rem;
+  }
+  
+  .text-truncate-container p {
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .description {
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .location {
+    font-family: Montserrat;
+  }
+  
+  
+  
+  .date-time {
+    font-size: 14px;
+    color: #6c757d;
+    font-family: Montserrat;
+  }
+  
+  .calendar-icon {
+    color: #6c757d;
+    padding-right: 5px;
+  }
+  
+  .site-section {
+    border-bottom: #18151f 1px solid;
+  }
+  
+  /* GRID */
+  .grid-display {
+    display: grid;
+    grid-template-rows: 6fr 1fr;
+    gap: 0px 0px;
+  }
