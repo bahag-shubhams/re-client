@@ -434,6 +434,15 @@ h1.textphotos small:last-child {
   color: red;
 }
 
+.white-heart {
+  color: white;
+}
+
+.red{
+  background-color: #EE2026;
+  color: white;
+}
+
 .grey{
-  color: #525252; 
+  background-color: #525252; 
 }

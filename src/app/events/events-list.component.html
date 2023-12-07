@@ -59,16 +59,16 @@
       />
     </div>
     <div class="col-md-1 text-right">
-      <button class="btn btn-primary" (click)="sortEventsByDate()">
+      <button class="btn grey" (click)="sortEventsByDate()">
         <fa-icon
-          class="sort-icon"
+          class="sort-icon white-heart"
           [icon]="sortIcons[currentSortIconIndex]"
         ></fa-icon>
       </button>
       <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        <button class="btn btn-primary mx-2">
+        <button class="btn grey mx-2">
           <fa-icon
-            class="add-icon"
+            class="add-icon white-heart"
             [icon]="faPlusSquare"
           ></fa-icon>
         </button>
@@ -121,7 +121,7 @@
               </button>
             </div>
             <div class="col-md-2">
-              <button class="btn grey" [class.red-heart]="event.liked" (click)="toggleFavoriteEvent(event)">
+              <button class="btn grey" [class.white-heart]="!event.liked" [class.red-heart]="event.liked" (click)="toggleFavoriteEvent(event)">
                 <fa-icon [icon]="faHeart"></fa-icon>
               </button>
             </div>
@@ -131,7 +131,7 @@
     </div>
     <div class="button-container">
       <div class="button-wrapper">
-        <button [class.btn-primary]="currentPage === pageNumber" class="btn btn-primary page-button" *ngFor="let pageNumber of pageNumbers" (click)="goToPage(pageNumber)">
+        <button [class.red]="currentPage === pageNumber" class="btn page-button" *ngFor="let pageNumber of pageNumbers" (click)="goToPage(pageNumber)">
           {{ pageNumber }}
         </button>
       </div>

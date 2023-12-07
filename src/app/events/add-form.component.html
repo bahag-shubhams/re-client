@@ -9,8 +9,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <img class="photo mb-2" src="./assets/add-event.png">
-        <h5 class="modal-title" id="exampleModalLabel">Schedule a New Event</h5>
+        <h3 class="modal-title" id="exampleModalLabel">Schedule a New Event</h3>
         <button
           type="button"
           class="btn-close"
@@ -25,7 +24,7 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
 
-           <label for="title" class="form-label"> <i class="fas fa-tag" style="color: rgb(111, 180, 252);"></i> Title </label>
+           <label for="title" class="form-label"> <i class="fas fa-tag" style="color: #EE2026;"></i> Title </label>
             <input type="text" class="form-control" minlength="5" required name="title" #title="ngModel" [(ngModel)] = "event.title" id="title" />
             <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
               <div *ngIf="title.errors?.['required']">
@@ -38,7 +37,7 @@
           </div>
           
           <div class="mb-3">
-            <label for="event_description" class="form-label"> <i class="fas fa-file-alt" style="color: rgb(111, 180, 252);"></i> Description</label>
+            <label for="event_description" class="form-label"> <i class="fas fa-file-alt" style="color: #EE2026;"></i> Description</label>
             <textarea class="form-control" id="event_description" required name="description" #description="ngModel" [(ngModel)] = "event.event_description" rows="3" required minlength="10" maxlength="2000" ></textarea>
             <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
               <div *ngIf="description.errors?.['required']">
@@ -53,7 +52,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="location" class="form-label"> <i class="fas fa-map-marker-alt" style="color: rgb(111, 180, 252);"></i> Location</label>
+            <label for="location" class="form-label"> <i class="fas fa-map-marker-alt" style="color: #EE2026;"></i> Location</label>
             <input type="text" class="form-control" required name="location" #location="ngModel" [(ngModel)] = "event.loc" id="location" required minlength="3" maxlength="50" pattern="^[A-Za-z0-9\s\-]+$"/>
             <div *ngIf="location.invalid && (location.dirty || location.touched)" class="alert alert-danger">
               <div *ngIf="location.errors?.['required']">
@@ -75,7 +74,7 @@
             <input type="text" class="form-control" name="id" #id="ngModel" ([ngModel]) = "event.id" id="id" />
           </div> -->
           <div class="mb-3">
-            <label for="date" class="form-label"> <i class="fas fa-calendar-alt" style="color: rgb(111, 180, 252);"></i> Date</label>
+            <label for="date" class="form-label"> <i class="fas fa-calendar-alt" style="color: #EE2026;"></i> Date</label>
             <input type="date" class="form-control" required name="date" #date="ngModel" [(ngModel)] = "event.dat" id="date" />
             <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
               <div *ngIf="date.errors?.['required']">
@@ -84,14 +83,14 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="image" class="form-label">Image</label>
+            <label for="image" class="form-label"> <i class="fas fa-image" style="color: #EE2026;"></i> Image</label>
             <input type="file" class="form-control" id="image" (change)="handleImageUpload($event)" accept="image/*" />
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <button type="button" class="btn grey white-heart" data-bs-dismiss="modal">
               Close
             </button>
-            <button type="submit" class="btn btn-primary" [disabled]="!addEventForm.form.valid"> Add Event</button>
+            <button type="submit" class="btn grey white-heart" [disabled]="!addEventForm.form.valid"> Add Event</button>
           </div>
         </form>
       </div>

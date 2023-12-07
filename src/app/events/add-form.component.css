@@ -13,10 +13,10 @@
 
 /* Style the form title */
 .modal-title {
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: bold;
   margin: 0;
-  color: #308de3;
+  color: #525252;
   padding: 10px;
   align-items: center;
 }
@@ -54,7 +54,6 @@ label {
 
 /* Style the submit button */
 .modal-footer button {
-  background-color: #0074E4;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -117,6 +116,22 @@ label {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.red-heart {
+  color: red;
+}
+
+.white-heart {
+  color: white;
+}
+
+.red{
+  background-color: #EE2026;
+  color: white;
+}
+
+.grey{
+  background-color: #525252; 
+}
 
 
 
