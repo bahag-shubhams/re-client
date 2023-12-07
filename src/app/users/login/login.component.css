@@ -17,13 +17,14 @@ body, html {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 230vh;
   background-image: url('src/assets/bauhaus-img.jpeg'); /* Replace 'your-background-image.jpg' with the path to your image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Other styles for the form container and its content */
+
 .form-container {
   position: relative;
   max-width: 400px;

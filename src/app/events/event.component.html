@@ -1,6 +1,5 @@
 <ng-template #content let-modal>
   <div class="modal-header">
-    <img class="photo mb-2" src="./assets/update-event.png" />
     <h4 class="modal-title" id="modal-basic-title">Update Event</h4>
     <button
       type="button"
@@ -22,7 +21,7 @@
         />
 
         <label for="title" class="form-label">
-          <i class="fas fa-tag" style="color: rgb(111, 180, 252)"></i> Title
+          <i class="fas fa-tag" style="color: #EE2026"></i> Title
         </label>
         <input
           type="text"
@@ -46,7 +45,7 @@
       </div>
       <div class="mb-3">
         <label for="event_description" class="form-label">
-          <i class="fas fa-file-alt" style="color: rgb(111, 180, 252)"></i>
+          <i class="fas fa-file-alt" style="color: #EE2026"></i>
           Description</label
         >
         <textarea
@@ -83,7 +82,7 @@
         <label for="loc" class="form-label">
           <i
             class="fas fa-map-marker-alt"
-            style="color: rgb(111, 180, 252)"
+            style="color: #EE2026"
           ></i>
           Location</label
         >
@@ -118,7 +117,7 @@
       </div>
       <div class="mb-3">
         <label for="dat" class="form-label">
-          <i class="fas fa-calendar-alt" style="color: rgb(111, 180, 252)"></i>
+          <i class="fas fa-calendar-alt" style="color: #EE2026"></i>
           Date</label
         >
         <input
@@ -139,7 +138,7 @@
       </div>
       <div class="text-center">
         <button
-          class="btn btn-primary"
+          class="btn grey white-heart"
           [disabled]="!eventUpdateForm.form.valid"
           type="submit"
         >
@@ -193,7 +192,7 @@
         </div>
         <div class="text-center">
           <button
-            class="btn btn-primary my-2"
+            class="btn grey white-heart my-2"
             (click)="openUpdateModal(content)"
           >
             <fa-icon class="pen-icon" [icon]="faPen"></fa-icon>
@@ -202,7 +201,7 @@
       </div>
       <div class="d-flex justify-content-end">
         <div class="attend-event-btn">
-          <button class="btn btn-primary">Attend Event</button>
+          <button class="btn grey white-heart">Attend Event</button>
         </div>
       </div>
     </div>
@@ -227,7 +226,7 @@
         </div>
         <button
           type="submit"
-          class="btn btn-primary"
+          class="btn grey white-heart"
           [disabled]="commentForm.invalid"
         >
           Submit Comment
