@@ -1,26 +1,30 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
 
-body, html {
+body,
+html {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
-
+.bg {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/8/8f/Bauhaus_Zentrale_Mannheim.jpg");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('src/assets/bauhaus-img.jpeg'); /* Replace 'your-background-image.jpg' with the path to your image */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 /* Other styles for the form container and its content */
@@ -30,11 +34,15 @@ body, html {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.7); /* Adjust the alpha channel for transparency */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Adjust the alpha channel for transparency */
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 h2 {
@@ -54,7 +62,7 @@ label {
   margin-bottom: 5px;
   color: #333;
   height: 40px; /* Adjust the height as needed */
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 input {
