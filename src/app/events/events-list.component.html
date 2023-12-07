@@ -13,39 +13,27 @@
     <div class="slideshow">
       <div
         class="slideshow-image"
-        style="
-          background-image: url('assets/christmas-market.jpg');
-        "
+        style="background-image: url('assets/christmas-market.jpg')"
       ></div>
       <div
         class="slideshow-image"
-        style="
-          background-image: url('assets/team.JPG');
-        "
+        style="background-image: url('assets/team.JPG')"
       ></div>
       <div
         class="slideshow-image"
-        style="
-          background-image: url('assets/team-pic2.JPG');
-        "
+        style="background-image: url('assets/team-pic2.JPG')"
       ></div>
       <div
         class="slideshow-image"
-        style="
-          background-image: url('assets/board-games.jpg');
-        "
+        style="background-image: url('assets/board-games.jpg')"
       ></div>
       <div
         class="slideshow-image"
-        style="
-          background-image: url('assets/football.jpg');
-        "
+        style="background-image: url('assets/football.jpg')"
       ></div>
       <div
         class="slideshow-image"
-        style="
-          background-image: url('assets/drinks.jpg');
-        "
+        style="background-image: url('assets/drinks.jpg')"
       ></div>
     </div>
   </section>
@@ -68,10 +56,7 @@
       </button>
       <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <button class="btn grey mx-2">
-          <fa-icon
-            class="add-icon white-heart"
-            [icon]="faPlusSquare"
-          ></fa-icon>
+          <fa-icon class="add-icon white-heart" [icon]="faPlusSquare"></fa-icon>
         </button>
       </a>
     </div>
@@ -79,10 +64,7 @@
 
   <!-- CARDS -->
   <div class="row spacemargin">
-    <div
-      class="col-md-3 col-sm-6"
-      *ngFor="let event of events; let i = index"
-    >
+    <div class="col-md-3 col-sm-6" *ngFor="let event of events; let i = index">
       <div class="card mb-4">
         <img
           class="card-img-top text-center"
@@ -107,7 +89,7 @@
               <p class="card-text date-time">{{ event.dat | date }}</p>
             </div>
           </div>
-          <div class="row justify-content-center align-items-center">
+          <div class="row align-items-center">
             <div class="col-md-7">
               <button
                 class="btn btn-primary details-button"
@@ -122,7 +104,12 @@
               </button>
             </div>
             <div class="col-md-2">
-              <button class="btn grey" [class.white-heart]="!event.liked" [class.red-heart]="event.liked" (click)="toggleFavoriteEvent(event)">
+              <button
+                class="btn grey"
+                [class.white-heart]="!event.liked"
+                [class.red-heart]="event.liked"
+                (click)="toggleFavoriteEvent(event)"
+              >
                 <fa-icon [icon]="faHeart"></fa-icon>
               </button>
             </div>
@@ -132,7 +119,12 @@
     </div>
     <div class="button-container">
       <div class="button-wrapper">
-        <button [class.red]="currentPage === pageNumber" class="btn page-button" *ngFor="let pageNumber of pageNumbers" (click)="goToPage(pageNumber)">
+        <button
+          [class.red]="currentPage === pageNumber"
+          class="btn page-button"
+          *ngFor="let pageNumber of pageNumbers"
+          (click)="goToPage(pageNumber)"
+        >
           {{ pageNumber }}
         </button>
       </div>
