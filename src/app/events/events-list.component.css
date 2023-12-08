@@ -382,6 +382,11 @@
     transform: scale(1.2);
   }
 }
+h1 {
+  font-size: 1.68em;
+  margin: 0.67em 0;
+}
+
 h1.textphotos {
   position: absolute;
   top: 35%;
