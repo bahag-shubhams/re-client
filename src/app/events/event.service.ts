@@ -74,6 +74,10 @@ export class EventService {
     return this.http.get<Event[]>(`${this.URL}/${page_number}?search=${searchTerm}&sort=${sort}`);
   }
 
+  translateEvent(event: Event, target_lang:string): Observable<Event>{
+    return this.http.post<Event>(`${environment.url}/translate?target_lang=${target_lang}`, event);
+  }
+
   // geocodeLocation(location: string): Observable<google.maps.LatLngLiteral | null> {
   //   const params = new HttpParams()
   //     .set('address', location)

@@ -6,6 +6,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { faLanguage } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-event',
@@ -17,10 +18,12 @@ export class EventComponent implements OnInit {
   comments: Comment[] = [];
   newCommentText: string = '';
   faPen = faPen;
+  faLanguage = faLanguage;
   display: any;
   center: google.maps.LatLngLiteral = {lat:10, lng:10};
   zoom = 10;
   attending: boolean = false;
+  target_lang: string = 'DE';
 
   mapOptions: google.maps.MapOptions = {mapId: "ebaa6a7b1e765d5d"}
 
@@ -115,5 +118,12 @@ export class EventComponent implements OnInit {
   move(event: google.maps.MapMouseEvent){
     if(event.latLng!=null)
     this.display = (event.latLng.toJSON())
+  }
+
+  translate() {
+    this.eventService.translateEvent(this.event, this.target_lang).subscribe((event) => {
+      this.event = event;
+      this.target_lang = this.target_lang === 'DE' ? 'EN' : 'DE';
+    });
   }
 }
