@@ -120,10 +120,11 @@ export class EventComponent implements OnInit {
     this.display = (event.latLng.toJSON())
   }
 
+  /*
   translate() {
     this.eventService.translateEvent(this.event, this.target_lang).subscribe((event) => {
       this.event = event;
       this.target_lang = this.target_lang === 'DE' ? 'EN' : 'DE';
     });
-  }
+  }*/
 }
